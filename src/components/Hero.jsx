@@ -27,7 +27,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-xl md:text-2xl text-secondary max-w-2xl leading-relaxed mb-10">
-          I'm Facundo Bisio — a Senior Frontend Engineer specialized in high-performance UIs, design systems, and creative development.
+          I'm Facundo Bisio — a Junior Fullstack Engineer specialized in high-performance UIs, design systems, and creative development.
         </p>
 
         <div className="flex flex-wrap gap-4">

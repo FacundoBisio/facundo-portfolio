@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-start pt-20">
+    <section id="inicio" className="relative w-full min-h-[90vh] flex flex-col justify-center items-start pt-20">
       
       {/* Abstract Background Blur */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />

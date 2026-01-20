@@ -16,7 +16,7 @@ const languages = [
 
 export default function Skills() {
   return (
-    <section className="w-full py-20 border-t border-white/5">
+    <section id="habilidades" className="w-full py-20 border-t border-white/5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         
         <div>

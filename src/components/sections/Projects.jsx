@@ -1,63 +1,30 @@
 import { motion } from 'framer-motion';
+import { staggerContainer, fadeInUp } from '../../utils/animations';
 
-const projects = [
-  {
-    title: "Tienda Mates",
-    category: "E-Commerce / Fullstack",
-    description: "Complete e-commerce for 'Mates' with cart, catalog, and product details. Built with React Context API for global state and Node.js/Express backend.",
-    stack: ["React", "Node.js", "Express", "Tailwind"],
-    year: "2024",
-    link: "https://tienda-mates.vercel.app/",
-    repo: "https://github.com/FacundoBisio/Tienda-Mates"
-  },
-  {
-    title: "Palmelita",
-    category: "Official Website / Business",
-    description: "Official site for 'Palmelita' (Canary Islands). AI-optimized development focusing on premium aesthetic, multi-language support, and SEO.",
-    stack: ["HTML5", "CSS3", "JavaScript", "AI Augmented"],
-    year: "2024",
-    link: "https://confituras.vercel.app/",
-    repo: "https://github.com/FacundoBisio/confituras"
-  },
-  {
-    title: "EUSA Website",
-    category: "Institutional Website",
-    description: "Modern web presence for EUSA. Focused on clear information architecture and accessible user experience.",
-    stack: ["React", "Vite", "Tailwind"],
-    year: "2024",
-    link: "https://eusa-website.vercel.app/", // Inferred or placeholder
-    repo: "https://github.com/FacundoBisio/eusa-website"
-  },
-  {
-    title: "Clima App",
-    category: "Utility / API Integration",
-    description: "Real-time weather application integrating external meteorological APIs. Features dynamic background changes based on weather conditions.",
-    stack: ["React", "API Integration", "CSS Modules"],
-    year: "2023",
-    link: "#",
-    repo: "https://github.com/FacundoBisio/clima-app"
-  }
-];
+import { projects } from '../../data/projects';
 
 export default function Projects() {
   return (
-    <section id="projects" className="w-full py-32">
+    <section id="proyectos" className="w-full py-32">
        <div className="mb-20 flex items-end justify-between">
           <h2 className="text-4xl md:text-5xl font-semibold text-white">Selected Work</h2>
           <span className="text-secondary hidden md:block">Case Studies ({projects.length})</span>
        </div>
 
-       <div className="w-full border-t border-white/10">
+       <motion.div 
+         variants={staggerContainer}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true, margin: "-100px" }}
+         className="w-full border-t border-white/10"
+       >
          {projects.map((project, index) => (
            <motion.a 
              href={project.link}
              target="_blank"
              rel="noopener noreferrer"
              key={index}
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ delay: index * 0.1, duration: 0.5 }}
+             variants={fadeInUp}
              className="group w-full py-12 border-b border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-white/5 transition-all duration-500 px-6 -mx-6 rounded-lg relative overflow-hidden"
            >
              {/* Hover Glow Effect specifically for project cards */}
@@ -83,7 +50,7 @@ export default function Projects() {
              </div>
            </motion.a>
          ))}
-       </div>
+       </motion.div>
     </section>
   );
 }

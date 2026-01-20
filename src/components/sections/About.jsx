@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useMotionTemplate, useSpring } from 'framer-motion';
-import profileImg from '../assets/yoiconico.jpg';
+import profileImg from '../../assets/yoiconico.jpg';
 
 export default function About() {
   const containerRef = useRef(null);
@@ -40,7 +40,7 @@ export default function About() {
   const maskImage = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, black 100%, transparent 100%)`;
 
   return (
-    <section className="w-full py-32 flex flex-col md:flex-row items-center gap-20">
+    <section id="sobre-mi" className="w-full py-32 flex flex-col md:flex-row items-center gap-20">
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -78,7 +78,7 @@ export default function About() {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="relative z-10 w-full aspect-[4/5] max-w-sm ml-auto bg-surface rounded-2xl overflow-hidden border border-white/5"
+            className="relative z-10 w-full aspect-4/5 max-w-sm ml-auto bg-surface rounded-2xl overflow-hidden border border-white/5"
         >
            {/* Background: Black and White Image (Always Visible) */}
            <img 

@@ -22,7 +22,7 @@ export default function Hero() {
         </div>
 
         <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] text-white my-6">
-          Building <span className="opacity-50">polished</span> <br />
+          Building <span className="gradient-text">polished</span> <br />
           digital experiences.
         </h1>
 

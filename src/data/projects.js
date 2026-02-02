@@ -9,7 +9,7 @@ export const projects = [
     repo: 'https://github.com/FacundoBisio/eusa-website'
   },
   {
-    title: 'Tienda Mates',
+    title: 'FFMates Store',
     category: 'E-Commerce / Fullstack',
     description: 'Engineered a scalable e-commerce architecture using React Context API for global state management to eliminate prop drilling. Built a performant product catalog with Node.js/Express backend and implemented error boundary handling for robust UX.',
     stack: ['React', 'Tailwind CSS', 'Context API', 'Node.js', 'Express'],
@@ -18,7 +18,7 @@ export const projects = [
     repo: 'https://github.com/FacundoBisio/Tienda-Mates'
   },
   {
-    title: 'Palmelita',
+    title: 'Confituras Palmelita',
     category: 'Official Website / Business',
     description: 'Deployed a multi-language site (Hreflang strategy) improving international SEO visibility. Implemented semantic HTML structure and Schema.org markup. Optimized Core Web Vitals using fetchpriority="high" for critical assets.',
     stack: ['HTML5', 'CSS3', 'JavaScript', 'SEO Technical', 'i18n', 'Hreflang'],
@@ -27,7 +27,7 @@ export const projects = [
     repo: 'https://github.com/FacundoBisio/confituras'
   },
   {
-    title: 'Clima App',
+    title: 'Weather App',
     category: 'Utility / API Integration',
     description: 'Integrated OpenWeatherMap API with Axios/Fetch, implementing resilient error handling and loading states. Visualized 5-day forecasts using Recharts and enhanced UX with micro-interactions via Framer Motion.',
     stack: ['React', 'Tailwind CSS', 'Axios', 'Recharts', 'Framer Motion'],

@@ -51,7 +51,7 @@ const items = [
 export default function Experience() {
   return (
     <Section id="experiencia">
-      <h2 className="h2 mb-8">Experience</h2>
+      <spam className="text-blue-500 mb-8">Experience</spam>
       <motion.div 
         variants={staggerContainer}
         initial="hidden"

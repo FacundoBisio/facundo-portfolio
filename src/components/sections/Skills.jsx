@@ -20,7 +20,7 @@ export default function Skills() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         
         <div>
-           <h3 className="text-2xl font-semibold text-white mb-6">Technical Arsenal</h3>
+           <h3 className="text-2xl font-semibold mb-6">Technical Arsenal</h3>
            <p className="text-secondary leading-relaxed mb-8">
              I bring a diverse toolkit to the table, specializing in the JavaScript ecosystem. My academic background gives me a strong foundation in software architecture, while my professional work focuses on shipping real-world products.
            </p>

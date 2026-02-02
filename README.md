@@ -1,82 +1,112 @@
-# Facundo Bisio | Senior Frontend Portfolio
+# 💼 Facundo Bisio | Fullstack Developer Portfolio
 
-> **Engineering-focused portfolio** built with **React**, **Tailwind CSS v4**, and **Framer Motion**.
-> Features global state management, performance optimizations (Lazy Loading, Code Splitting), and a scalable folder architecture.
+> **High-performance portfolio** showcasing my journey as a Fullstack Developer specializing in React, Node.js, and modern web technologies. Built with cutting-edge tools and optimized for real-world performance.
 
-![Portfolio Preview](/public/featured.png) <!-- Update with actual screenshot if available -->
+![Portfolio Preview](/public/featured.png)
 
-## 🚀 Key Features
+## 🎯 About This Portfolio
 
-### 🏗 Architecture
+This isn't just another portfolio—it's a **technical showcase** of my engineering skills. Every feature, from global state management to micro-animations, demonstrates the attention to detail I bring to production codebases.
 
-- **Global State Management**: Powered by a custom `UIContext` (Context API) to manage overlays like Toasts and Lightboxes without prop drilling.
-- **Atomic Design Structure**: Organized code into `layout`, `sections`, and reusable `ui` components for scalability.
-- **Single Source of Truth**: Project data is consolidated in `src/data/projects.js`, decoupling content from logic.
+### ✨ What Makes This Special
 
-### ⚡ Performance
+- **🏗️ Enterprise-Grade Architecture**: Context API for global state, atomic design patterns, and separated concerns
+- **⚡ Performance First**: Code splitting, lazy loading, and optimized asset delivery for lightning-fast loads
+- **🎨 Premium UX**: Framer Motion animations, interactive hover effects, and responsive design that works everywhere
+- **📱 Mobile-Optimized**: Touch-friendly interfaces with smooth transitions across all devices
 
-- **Code Splitting**: Heavy sections (`Projects`, `Skills`, etc.) are lazy-loaded using `React.lazy` and `Suspense`, improving Initial Load Time.
-- **Web Vitals Optimized**: Semantic HTML structure and optimized asset loading.
+## 🛠️ Tech Stack
 
-### 🎨 UX & Animations
+Built with the tools I use daily in production:
 
-- **Micro-Interactions**: Hover effects, scroll-linked reveal animations, and "Spotlight" mouse tracking.
-- **Framer Motion Variants**: Reusable animation utilities (`staggerContainer`, `fadeInUp`) for consistent motion design.
-- **Optimistic UI**: Instant feedback on interactions (like CV download).
-
-## 🛠️ Stack
-
-- **Core**: React 19, JavaScript (ES6+), Vite 6
-- **Styling**: Tailwind CSS v4, CSS Variables
-- **Motion**: Framer Motion 12
+- **Frontend**: React 19, JavaScript ES6+
+- **Styling**: Tailwind CSS v4 (latest), Custom CSS Variables
+- **Animation**: Framer Motion 12
+- **Build Tool**: Vite 6
 - **Icons**: Lucide React
+- **State**: Context API
 
-## 📂 Project Structure
+## 🚀 Featured Projects
 
-```bash
+This portfolio highlights my work across:
+
+- 🏥 **Healthcare Management Systems** (React, Node.js, MongoDB)
+- 🍊 **E-commerce Platforms** (SEO-optimized, Multi-language)
+- 🎨 **Premium Landing Pages** (Tailwind v4, Optimistic UI)
+- 🔄 **CI/CD Implementations** (Performance optimization)
+
+## 💡 Technical Highlights
+
+### Architecture & Patterns
+
+```
 src/
 ├── components/
-│   ├── layout/       # Global layout wrappers (Navbar, Footer)
-│   ├── sections/     # Page sections (Hero, Projects, Experience)
-│   └── ui/           # Reusable atoms (Toast, Lightbox, Badge)
-├── context/
-│   └── UIContext.jsx # Global UI State
-├── data/             # Static content (projects.js)
-├── utils/            # Helpers & Animation variants
-└── App.jsx           # Entry point with Routing/Providers
+│   ├── layout/      # Global wrappers (Navbar, Footer)
+│   ├── sections/    # Homepage sections (Hero, Projects, Experience)
+│   └── ui/          # Reusable components (Toast, Lightbox, Badge)
+├── context/         # Global state management
+├── data/            # Content separation from logic
+├── utils/           # Animation helpers & utilities
+└── App.jsx          # Entry point with providers
 ```
 
-## 🚦 Getting Started
+### Performance Optimizations
 
-1. **Clone the repository**
+- **Code Splitting**: Each section lazy-loads independently
+- **Image Optimization**: WebP format, lazy loading
+- **Bundle Size**: Tree-shaking and removal of unused dependencies
+- **SEO Ready**: Semantic HTML, proper meta tags
 
-   ```bash
-   git clone https://github.com/FacundoBisio/facundo-portfolio.git
-   ```
+## 🎨 Design Philosophy
 
-2. **Install dependencies**
+- **Minimalist & Modern**: Clean interfaces that let the work speak
+- **Accessibility First**: Semantic HTML, ARIA labels, keyboard navigation
+- **Responsive Design**: Mobile-first approach, works on all screen sizes
+- **Smooth Interactions**: 60fps animations, optimistic UI updates
 
-   ```bash
-   npm install
-   ```
+## 🌟 Why Work With Me?
 
-3. **Run development server**
+I'm a **Fullstack Developer** based in Córdoba, Argentina, with proven experience in:
 
-   ```bash
-   npm run dev
-   ```
+✅ **Building Production Apps**: React + Node.js for real-world clients  
+✅ **SEO & Performance**: Technical SEO, Core Web Vitals optimization  
+✅ **Modern Workflows**: Git, CI/CD, Agile/Scrum environments  
+✅ **Client Communication**: Experience with international teams (Spain-based clients)  
+✅ **Problem Solving**: From concept to deployment, I handle the full stack
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+## 📚 Current Education
 
-## 📬 Contact
+- 🎓 **Software Engineering** - Universidad Siglo 21 (2nd Year)
+- 💻 **Programming Technician** - ITS Villada (Graduated)
+- 🌐 **English**: B2/C1 Level (FCE - High)
 
-- **Email**: [facubisio433@gmail.com](mailto:facubisio433@gmail.com)
-- **LinkedIn**: [Facundo Bisio Griffa](https://www.linkedin.com/in/facundo-bisio-25a104247/)
-- **GitHub**: [@FacundoBisio](https://github.com/FacundoBisio)
+## 🚀 Quick Start
+
+Want to run this locally?
+
+```bash
+# Clone the repo
+git clone https://github.com/FacundoBisio/facundo-portfolio.git
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## 📬 Let's Connect
+
+I'm open to **Fullstack/Frontend opportunities** and **freelance projects**.
+
+- 📧 **Email**: [facubisio433@gmail.com](mailto:facubisio433@gmail.com)
+- 💼 **LinkedIn**: [Facundo Bisio Griffa](https://www.linkedin.com/in/facundo-bisio-25a104247/)
+- 🐙 **GitHub**: [@FacundoBisio](https://github.com/FacundoBisio)
 
 ---
 
-_Based in Córdoba, Argentina._
+**Built with ❤️ in Córdoba, Argentina** | Available for remote work worldwide 🌎

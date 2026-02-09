@@ -10,11 +10,11 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="w-full py-40 flex flex-col items-center text-center overflow-hidden">
-      <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
+    <section id="contacto" className="w-full py-24 md:py-40 flex flex-col items-center text-center overflow-hidden">
+      <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 md:mb-8 tracking-tighter px-4">
         Let's build something great.
       </h2>
-      <p className="text-xl text-secondary mb-20 max-w-lg">
+      <p className="text-base md:text-xl text-secondary mb-16 md:mb-20 max-w-lg px-4">
         Open to Fullstack / Frontend opportunities.<br/>
         Based in Córdoba, Argentina.
       </p>

@@ -51,7 +51,7 @@ const items = [
 export default function Experience() {
   return (
     <Section id="experiencia">
-      <spam className="text-blue-500 mb-8">Experience</spam>
+      <span className="text-blue-500 mb-8">Experience</span>
       <motion.div 
         variants={staggerContainer}
         initial="hidden"
@@ -66,14 +66,14 @@ export default function Experience() {
             className="group"
           >
             <div className="sweep-border sweep-hover rounded-2xl">
-            <div className="card p-5 rounded-2xl transition-transform duration-300 group-hover:-translate-y-1">
-              <div className="flex items-baseline justify-between gap-4">
+            <div className="card p-4 md:p-5 rounded-2xl transition-transform duration-300 group-hover:-translate-y-1">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4">
                 <div>
-                  <h3 className="font-semibold">{item.role} · {item.company}</h3>
-                  <p className="muted text-sm">{item.period}</p>
+                  <h3 className="font-semibold text-base md:text-lg">{item.role} · {item.company}</h3>
+                  <p className="muted text-xs md:text-sm">{item.period}</p>
                 </div>
               </div>
-              <ul className="mt-3 list-disc pl-5 text-sm text-neutral-300">
+              <ul className="mt-3 list-disc pl-5 text-xs md:text-sm text-neutral-300 space-y-1">
                 {item.bullets.map(b => <li key={b}>{b}</li>)}
               </ul>
             </div>

@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="inicio" className="relative w-full min-h-[90vh] flex flex-col justify-center items-start pt-20">
       
       {/* Abstract Background Blur */}
-      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-5%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -13,7 +13,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-xs font-medium text-secondary mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-xs font-medium text-secondary mb-6 md:mb-8">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -21,16 +21,16 @@ export default function Hero() {
           Available for new projects
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] text-white my-6">
+        <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9] text-white my-4 md:my-6">
           Building <span className="gradient-text">polished</span> <br />
           digital experiences.
         </h1>
 
-        <p className="text-xl md:text-2xl text-secondary max-w-2xl leading-relaxed mb-10">
+        <p className="text-lg md:text-2xl text-secondary max-w-2xl leading-relaxed mb-8 md:mb-10">
           I'm Facundo Bisio — a Junior Fullstack Engineer specialized in high-performance UIs, design systems, and creative development.
         </p>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
           <a href="#projects" className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 text-center">
             <span className="relative z-10">View Projects</span>
             <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />

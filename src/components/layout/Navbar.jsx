@@ -67,7 +67,7 @@ export default function Navbar() {
               className="btn-ghost btn-cv inline-flex items-center gap-2"
             >
               <Download size={18} />
-              <span>Descargar CV</span>
+              <span>Download CV</span>
             </button>
           </div>
 

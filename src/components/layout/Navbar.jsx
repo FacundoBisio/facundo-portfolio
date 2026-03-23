@@ -23,8 +23,8 @@ export default function Navbar() {
 
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/CV-BISIO-FACUNDO.pdf'
-    link.download = 'CV-BISIO-FACUNDO.pdf'
+    link.href = '/FACUNDO-BISIO-CV.docx'
+    link.download = 'FACUNDO-BISIO-CV.docx'
     document.body.appendChild(link)
     link.click()
     link.remove()
@@ -64,7 +64,7 @@ export default function Navbar() {
           <div className="hidden md:flex flex-1 justify-end">
             <button
               onClick={handleDownload}
-              className="btn-ghost btn-cv inline-flex items-center gap-2"
+              className="btn-ghost btn-cv inline-flex items-center gap-2 cursor-pointer transition-colors hover:text-white"
             >
               <Download size={18} />
               <span>Descargar CV</span>
@@ -93,7 +93,7 @@ export default function Navbar() {
               
               <button
                 onClick={() => { handleDownload(); setOpen(false); }}
-                className="btn-ghost btn-brand w-fit inline-flex items-center gap-2 mt-2"
+                className="btn-ghost btn-brand w-fit inline-flex items-center gap-2 mt-2 cursor-pointer transition-colors hover:text-white"
               >
                 <Download size={18} />
                 <span>Descargar CV</span>

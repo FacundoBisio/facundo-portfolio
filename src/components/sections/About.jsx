@@ -40,7 +40,7 @@ export default function About() {
   const maskImage = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, black 100%, transparent 100%)`;
 
   return (
-    <section id="sobre-mi" className="w-full py-32 flex flex-col md:flex-row items-center gap-20">
+    <section id="sobre-mi" className="w-full py-20 md:py-32 flex flex-col md:flex-row items-center gap-12 md:gap-20">
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -48,19 +48,22 @@ export default function About() {
         transition={{ duration: 0.6 }}
         className="flex-1"
       >
-        <span className="text-accent font-medium mb-4 block">About Me</span>
-        <h2 className="text-4xl md:text-5xl font-semibold mb-8 text-white leading-tight">
-          Systems Engineering Student & <span className="text-gray-500">Fullstack Creator</span>.
+        <span className="text-accent font-medium mb-3 md:mb-4 block text-sm md:text-base">About Me</span>
+        <h2 className="text-3xl md:text-5xl font-semibold mb-6 md:mb-8 text-white leading-tight">
+          Systems Engineering Student & <span className="text-accent">Fullstack Creator</span>.
         </h2>
-        <div className="space-y-6 text-secondary text-lg leading-relaxed">
+        <div className="space-y-4 md:space-y-6 text-secondary text-base md:text-lg leading-relaxed">
           <p>
-            I'm Facundo Bisio, a developer from Córdoba, Argentina, currently studying <strong>Software Engineering at Universidad Siglo 21</strong> (2nd Year) and holding a Technician degree in Programming from ITS Villada.
+            I'm Facundo Bisio, a developer from Córdoba, Argentina, currently studying <strong>Software Engineering at Universidad Siglo 21</strong> (3rd Year) and holding a Technician degree in Programming from ITS Villada.
           </p>
           <p>
-            My experience ranges from developing patient management systems for <strong>DownIsUp Córdoba</strong> to building full-featured e-commerce platforms. I specialize in the <strong>MERN stack (MongoDB, Express, React, Node)</strong> and obsess over performance, clean code, and intuitive UX.
+            As a <strong>freelance developer</strong>, I've built production websites for international clients. For <strong>Confituras Palmelita</strong> (Spain), I deployed a multi-language e-commerce site implementing hreflang strategy for international SEO, Schema.org markup for enhanced SERP visibility, and Core Web Vitals optimization using fetchpriority="high" for critical assets. For <strong>EUSA Partners</strong>, I developed a premium "Founder Applications" platform with Tailwind CSS and PHP backend, featuring optimistic UI for instant user feedback and technical SEO with JSON-LD/Open Graph integration.
           </p>
           <p>
-             I've also worked as an Intern at <strong>Kunan S.A.</strong>, collaborating in Agile/Scrum environments to optimize web app performance.
+            I also founded <strong>FFMates Store</strong>, a scalable e-commerce platform where I engineered the entire architecture using <strong>React Context API</strong> for global state management, built a performant product catalog with <strong>Node.js/Express</strong> backend, and implemented error boundary handling for robust UX.
+          </p>
+          <p>
+            I specialize in the <strong>MERN stack (MongoDB, Express, React, Node)</strong>, modern CSS frameworks like <strong>Tailwind CSS</strong>, and advanced techniques like optimistic UI, international SEO (hreflang, Schema.org), and Core Web Vitals optimization. I'm passionate about clean code, performance, and creating intuitive user experiences.
           </p>
         </div>
       </motion.div>
@@ -70,7 +73,7 @@ export default function About() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex-1 relative"
+        className="flex-1 relative w-full md:w-auto"
       >
         {/* Container for the effect */}
         <div 
@@ -78,7 +81,7 @@ export default function About() {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="relative z-10 w-full aspect-4/5 max-w-sm ml-auto bg-surface rounded-2xl overflow-hidden border border-white/5"
+            className="relative z-10 w-full aspect-4/5 max-w-[280px] sm:max-w-sm mx-auto md:ml-auto md:mr-0 bg-surface rounded-2xl overflow-hidden border border-white/5"
         >
            {/* Background: Black and White Image (Always Visible) */}
            <img 

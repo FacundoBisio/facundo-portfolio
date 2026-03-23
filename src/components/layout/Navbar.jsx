@@ -3,11 +3,11 @@ import { Menu, X, Download } from 'lucide-react'
 import Toast from '../ui/Toast'
 
 const links = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#experiencia', label: 'Experiencia' },
-  { href: '#habilidades', label: 'Habilidades' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#inicio', label: 'Home' },
+  { href: '#proyectos', label: 'Projects' },
+  { href: '#experiencia', label: 'Experience' },
+  { href: '#habilidades', label: 'Skills' },
+  { href: '#contacto', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -54,10 +54,10 @@ export default function Navbar() {
 
           {/* Desktop Links (Center) */}
           <div className="hidden md:flex flex-1 justify-center items-center gap-6">
-            <a href="#inicio" className="nav-link">Inicio</a>
-            <a href="#sobre-mi" className="nav-link">Sobre mí</a>
-            <a href="#experiencia" className="nav-link">Experiencia</a>
-            <a href="#contacto" className="nav-link">Contacto</a>
+            <a href="#inicio" className="nav-link">Home</a>
+            <a href="#sobre-mi" className="nav-link">About</a>
+            <a href="#experiencia" className="nav-link">Experience</a>
+            <a href="#contacto" className="nav-link">Contact</a>
           </div>
 
           {/* Actions (Right) */}
@@ -67,7 +67,7 @@ export default function Navbar() {
               className="btn-ghost btn-cv inline-flex items-center gap-2 cursor-pointer transition-colors hover:text-white"
             >
               <Download size={18} />
-              <span>Descargar CV</span>
+              <span>Download CV</span>
             </button>
           </div>
 
@@ -86,17 +86,17 @@ export default function Navbar() {
         {open && (
           <div className="md:hidden border-t border-neutral-800 bg-neutral-950/95 backdrop-blur">
             <div className="container py-3 flex flex-col gap-2.5 px-6">
-                <a href="#inicio" className="nav-link w-fit" onClick={() => setOpen(false)}>Inicio</a>
-                <a href="#sobre-mi" className="nav-link w-fit" onClick={() => setOpen(false)}>Sobre mí</a>
-                <a href="#experiencia" className="nav-link w-fit" onClick={() => setOpen(false)}>Experiencia</a>
-                <a href="#contacto" className="nav-link w-fit" onClick={() => setOpen(false)}>Contacto</a>
+                <a href="#inicio" className="nav-link w-fit" onClick={() => setOpen(false)}>Home</a>
+                <a href="#sobre-mi" className="nav-link w-fit" onClick={() => setOpen(false)}>About</a>
+                <a href="#experiencia" className="nav-link w-fit" onClick={() => setOpen(false)}>Experience</a>
+                <a href="#contacto" className="nav-link w-fit" onClick={() => setOpen(false)}>Contact</a>
               
               <button
                 onClick={() => { handleDownload(); setOpen(false); }}
                 className="btn-ghost btn-brand w-fit inline-flex items-center gap-2 mt-2 cursor-pointer transition-colors hover:text-white"
               >
                 <Download size={18} />
-                <span>Descargar CV</span>
+                <span>Download CV</span>
               </button>
             </div>
           </div>

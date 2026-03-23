@@ -6,30 +6,44 @@ const items = [
   {
     role: 'Fullstack Developer',
     company: 'ONG Downisup Córdoba',
-    period: 'Mar 2024 – Dic 2024',
+    period: 'Mar 2024 - Dec 2024',
     bullets: [
-      'Gestión de pacientes y turnos; web institucional.',
-      'Frontend con React + Tailwind; integración APIs REST.',
-      'Sincronización casi en tiempo real y diseño accesible.'
+      'Built patient management system with appointment scheduling and institutional website.',
+      'React + Tailwind CSS frontend with REST API integration and real-time data sync.',
+      'Implemented accessible UI/UX following WCAG guidelines and responsive design.',
+      'Error boundary handling and optimistic UI updates for enhanced user experience.'
     ]
   },
   {
     role: 'Pasante',
     company: 'Kunan S.A.',
-    period: 'Jul 2024 – Oct 2024',
+    period: 'Jul 2024 - Oct 2024',
     bullets: [
-      'Soporte a desarrollos web y flujos CI/CD.',
-      'Buenas prácticas de performance y responsive.'
+      'Collaborated in Agile/Scrum teams supporting web development projects.',
+      'Optimized application performance and implemented responsive design patterns.',
+      'Contributed to CI/CD pipeline improvements and deployment workflows.'
+    ]
+  },
+  {
+    role: 'Freelance Frontend Developer',
+    company: 'Confituras Palmelita (España)',
+    period: 'Sep 2025 - Present',
+    bullets: [
+      'Developed multi-language e-commerce site with HTML5/CSS3 and Vanilla JavaScript.',
+      'Implemented international SEO with hreflang tags and multi-domain routing strategy.',
+      'Schema.org structured data (LocalBusiness, Product) for enhanced SERP visibility.',
+      'Core Web Vitals optimization using fetchpriority="high" for critical assets.'
     ]
   },
   {
     role: 'Freelance Frontend Developer',
     company: 'EUSA Partners (España)',
-    period: 'Mar 2024 – Actualidad',
+    period: 'Mar 2025 - Aug 2025',
     bullets: [
-      'Diseño e implementación de landings "Premium" con Tailwind v4.',
-      'Optimistic UI y SEO Técnico (Open Graph, JSON-LD).',
-      'Deploy FTP/DNS y gestión de dominios.'
+      'Designed premium "Founder Applications" platform with Tailwind CSS and PHP backend.',
+      'Optimistic UI implementation for instant form feedback and improved UX.',
+      'Technical SEO with JSON-LD/Open Graph integration achieving high search rankings.',
+      'Managed full deployment cycle including FTP uploads, DNS configuration, and WebP optimization.'
     ]
   }
 ]
@@ -37,7 +51,7 @@ const items = [
 export default function Experience() {
   return (
     <Section id="experiencia">
-      <h2 className="h2 mb-8">Experiencia</h2>
+      <span className="text-blue-500 mb-8">Experience</span>
       <motion.div 
         variants={staggerContainer}
         initial="hidden"
@@ -52,14 +66,14 @@ export default function Experience() {
             className="group"
           >
             <div className="sweep-border sweep-hover rounded-2xl">
-            <div className="card p-5 rounded-2xl transition-transform duration-300 group-hover:-translate-y-1">
-              <div className="flex items-baseline justify-between gap-4">
+            <div className="card p-4 md:p-5 rounded-2xl transition-transform duration-300 group-hover:-translate-y-1">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4">
                 <div>
-                  <h3 className="font-semibold">{item.role} · {item.company}</h3>
-                  <p className="muted text-sm">{item.period}</p>
+                  <h3 className="font-semibold text-base md:text-lg">{item.role} · {item.company}</h3>
+                  <p className="muted text-xs md:text-sm">{item.period}</p>
                 </div>
               </div>
-              <ul className="mt-3 list-disc pl-5 text-sm text-neutral-300">
+              <ul className="mt-3 list-disc pl-5 text-xs md:text-sm text-neutral-300 space-y-1">
                 {item.bullets.map(b => <li key={b}>{b}</li>)}
               </ul>
             </div>

@@ -82,7 +82,7 @@ export default function Layout({ children }) {
       
       <Navbar />
       
-      <main className="relative flex flex-col items-center w-full max-w-[1400px] mx-auto px-6 md:px-12">
+      <main className="relative flex flex-col items-center w-full max-w-[1400px] mx-auto px-4 md:px-12">
         {children}
       </main>
 

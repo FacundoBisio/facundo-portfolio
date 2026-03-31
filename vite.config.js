@@ -6,16 +6,14 @@ export default defineConfig({
   plugins: [react(), tailwind()],
 
   build: {
-    minify: 'esbuild',
+    // rolldown-vite usa OXC como transpilador nativo — NO poner 'esbuild'
+    // porque esbuild no está instalado y rolldown ya no lo necesita.
+    // Dejar vacío usa el default de rolldown (oxc), que es más rápido.
     chunkSizeWarningLimit: 600,
-    reportCompressedSize: true,
 
     rollupOptions: {
       output: {
-        // rolldown-vite (el bundler que usa este proyecto) requiere manualChunks
-        // como FUNCIÓN, no como objeto plano. La función recibe el id del módulo
-        // y devuelve el nombre del chunk al que debe pertenecer, o undefined
-        // para dejar que rolldown decida por su cuenta.
+        // manualChunks como función (requerido por rolldown-vite)
         manualChunks(id) {
           if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
             return 'vendor-react'

@@ -10,7 +10,7 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [open, setOpen]       = useState(false)
+  const [open, setOpen]         = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -28,6 +28,17 @@ export default function Navbar() {
     a.remove()
   }
 
+  const linkStyle = {
+    fontFamily: 'var(--mono)',
+    fontSize: 12.5,
+    fontWeight: 500,
+    color: 'var(--muted)',
+    textDecoration: 'none',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    transition: 'color 0.2s',
+  }
+
   return (
     <nav style={{
       position: 'fixed',
@@ -36,46 +47,26 @@ export default function Navbar() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '1.1rem 2.5rem',
+      padding: '1rem 1.25rem',
       borderBottom: '0.5px solid var(--line)',
       background: scrolled ? 'rgba(10,10,11,0.96)' : 'rgba(10,10,11,0.88)',
       backdropFilter: 'blur(12px)',
       transition: 'background 0.3s',
     }}>
       {/* Logo */}
-      <span style={{
-        fontFamily: 'var(--mono)',
-        fontSize: 13,
-        color: 'var(--accent)',
-        letterSpacing: '0.05em',
-      }}>
+      <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--accent)', letterSpacing: '0.05em' }}>
         fb.dev
       </span>
 
       {/* Desktop links */}
-      <ul style={{
-        display: 'flex',
-        gap: '2.2rem',
-        listStyle: 'none',
-        margin: 0,
-        padding: 0,
-      }} className="hidden-mobile">
+      <ul className="nav-desktop" style={{ gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
           <li key={l.href}>
             <a
               href={l.href}
-              style={{
-                fontFamily: 'var(--mono)',
-                fontSize: 12.5,
-                fontWeight: 500,
-                color: 'var(--muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => e.target.style.color = 'var(--text)'}
-              onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+              style={linkStyle}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}
             >
               {l.label}
             </a>
@@ -83,12 +74,11 @@ export default function Navbar() {
         ))}
       </ul>
 
-      {/* CV button */}
+      {/* Desktop CV button */}
       <button
         onClick={handleDownload}
-        className="hidden-mobile"
+        className="nav-desktop"
         style={{
-          display: 'inline-flex',
           alignItems: 'center',
           gap: '0.45rem',
           border: '0.5px solid var(--line2)',
@@ -96,7 +86,7 @@ export default function Navbar() {
           color: 'var(--muted)',
           fontFamily: 'var(--mono)',
           fontSize: 12,
-          padding: '0.55rem 1.1rem',
+          padding: '0.5rem 1rem',
           cursor: 'pointer',
           letterSpacing: '0.05em',
           transition: 'border-color 0.2s, color 0.2s',
@@ -104,21 +94,21 @@ export default function Navbar() {
         onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text)'; e.currentTarget.style.color = 'var(--text)'; }}
         onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--muted)'; }}
       >
-        <Download size={13} />
+        <Download size={13} style={{ marginRight: 4 }} />
         Download CV
       </button>
 
       {/* Mobile toggle */}
       <button
-        className="show-mobile"
+        className="nav-mobile"
         onClick={() => setOpen(!open)}
-        style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer' }}
-        aria-label="Menú"
+        style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: '0.25rem' }}
+        aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
       >
-        {open ? <X size={20} /> : <Menu size={20} />}
+        {open ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      {/* Mobile menu */}
+      {/* Mobile drawer */}
       {open && (
         <div style={{
           position: 'absolute',
@@ -126,24 +116,17 @@ export default function Navbar() {
           left: 0, right: 0,
           background: 'rgba(10,10,11,0.98)',
           borderBottom: '0.5px solid var(--line)',
-          padding: '1.5rem 2.5rem',
+          padding: '1.5rem 1.25rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.2rem',
+          gap: '1.1rem',
         }}>
           {links.map(l => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              style={{
-                fontFamily: 'var(--mono)',
-                fontSize: 13,
-                color: 'var(--muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-              }}
+              style={{ ...linkStyle, fontSize: 14 }}
             >
               {l.label}
             </a>
@@ -162,24 +145,13 @@ export default function Navbar() {
               fontSize: 12,
               padding: '0.55rem 1.1rem',
               cursor: 'pointer',
-              marginTop: '0.5rem',
+              marginTop: '0.3rem',
             }}
           >
             <Download size={13} /> Download CV
           </button>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile   { display: block !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
-          .hidden-mobile { display: flex !important; }
-        }
-      `}</style>
     </nav>
   )
 }

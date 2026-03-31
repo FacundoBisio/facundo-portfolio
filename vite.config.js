@@ -6,28 +6,30 @@ export default defineConfig({
   plugins: [react(), tailwind()],
 
   build: {
-    // Minificación agresiva
     minify: 'esbuild',
-
-    // Subir el límite de warning de chunk (Framer Motion es grande)
     chunkSizeWarningLimit: 600,
+    reportCompressedSize: true,
 
     rollupOptions: {
       output: {
-        // Chunk splitting manual: separa vendors pesados del bundle principal
-        // → el browser puede cachear framer-motion por separado
-        manualChunks: {
-          'vendor-react':  ['react', 'react-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-lenis':  ['lenis'],
+        // rolldown-vite (el bundler que usa este proyecto) requiere manualChunks
+        // como FUNCIÓN, no como objeto plano. La función recibe el id del módulo
+        // y devuelve el nombre del chunk al que debe pertenecer, o undefined
+        // para dejar que rolldown decida por su cuenta.
+        manualChunks(id) {
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
+            return 'vendor-react'
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'vendor-motion'
+          }
+          if (id.includes('node_modules/lenis')) {
+            return 'vendor-lenis'
+          }
         },
       },
     },
-
-    // Genera reporte de tamaños en consola al buildear
-    reportCompressedSize: true,
   },
 
-  // Evita que Vite procese assets grandes como datos inline (< 4KB → inline, resto → file)
   assetsInlineLimit: 4096,
 })

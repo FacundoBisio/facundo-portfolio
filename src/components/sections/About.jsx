@@ -1,114 +1,139 @@
-import { useRef, useState } from 'react';
-import { motion, useMotionTemplate, useSpring } from 'framer-motion';
-import profileImg from '../../assets/yoiconico.jpg';
+import { motion } from 'framer-motion'
+import profileImg from '../../assets/yoiconico.jpg'
+
+const SectionLabel = ({ children }) => (
+  <div style={{
+    fontFamily: 'var(--mono)',
+    fontSize: 10.5,
+    letterSpacing: '0.18em',
+    textTransform: 'uppercase',
+    color: 'var(--muted)',
+    marginBottom: '3.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+  }}>
+    {children}
+    <span style={{ flex: 1, height: '0.5px', background: 'var(--line2)' }} />
+  </div>
+)
 
 export default function About() {
-  const containerRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  
-  // Mouse position spring for smooth tracking
-  const mouseX = useSpring(0, { stiffness: 500, damping: 50 });
-  const mouseY = useSpring(0, { stiffness: 500, damping: 50 });
-  
-  // Radius spring for expansion animation
-  // 0% when not hovered, expands to 150% (full cover) when hovered
-  const radius = useSpring(0, { stiffness: 100, damping: 20 });
-
-  function handleMouseMove({ clientX, clientY }) {
-    if (!containerRef.current) return;
-    const { left, top } = containerRef.current.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  function handleMouseEnter({ clientX, clientY }) {
-    setIsHovered(true);
-    // Set initial position immediately to avoid jumping
-    if (containerRef.current) {
-        const { left, top } = containerRef.current.getBoundingClientRect();
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-    }
-    radius.set(300); // Expand well beyond 100% to cover corners
-  }
-
-  function handleMouseLeave() {
-    setIsHovered(false);
-    radius.set(0); 
-  }
-
-  const maskImage = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, black 100%, transparent 100%)`;
-
   return (
-    <section id="sobre-mi" className="w-full py-20 md:py-32 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex-1"
-      >
-        <span className="text-accent font-medium mb-3 md:mb-4 block text-sm md:text-base">About Me</span>
-        <h2 className="text-3xl md:text-5xl font-semibold mb-6 md:mb-8 text-white leading-tight">
-          Systems Engineering Student & <span className="text-accent">Fullstack Creator</span>.
-        </h2>
-        <div className="space-y-4 md:space-y-6 text-secondary text-base md:text-lg leading-relaxed">
-          <p>
-            I'm Facundo Bisio, a developer from Córdoba, Argentina, currently studying <strong>Software Engineering at Universidad Siglo 21</strong> (3rd Year) and holding a Technician degree in Programming from ITS Villada.
-          </p>
-          <p>
-            As a <strong>freelance developer</strong>, I've built production websites for international clients. For <strong>Confituras Palmelita</strong> (Spain), I deployed a multi-language e-commerce site implementing hreflang strategy for international SEO, Schema.org markup for enhanced SERP visibility, and Core Web Vitals optimization using fetchpriority="high" for critical assets. For <strong>EUSA Partners</strong>, I developed a premium "Founder Applications" platform with Tailwind CSS and PHP backend, featuring optimistic UI for instant user feedback and technical SEO with JSON-LD/Open Graph integration.
-          </p>
-          <p>
-            I also founded <strong>FFMates Store</strong>, a scalable e-commerce platform where I engineered the entire architecture using <strong>React Context API</strong> for global state management, built a performant product catalog with <strong>Node.js/Express</strong> backend, and implemented error boundary handling for robust UX.
-          </p>
-          <p>
-            I specialize in the <strong>MERN stack (MongoDB, Express, React, Node)</strong>, modern CSS frameworks like <strong>Tailwind CSS</strong>, and advanced techniques like optimistic UI, international SEO (hreflang, Schema.org), and Core Web Vitals optimization. I'm passionate about clean code, performance, and creating intuitive user experiences.
-          </p>
-        </div>
-      </motion.div>
+    <section
+      id="sobre-mi"
+      style={{ borderBottom: '0.5px solid var(--line)' }}
+    >
+      <div style={{
+        maxWidth: 1200,
+        margin: '0 auto',
+        padding: '6rem 2.5rem',
+      }}>
+        <SectionLabel>Sobre mí</SectionLabel>
 
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex-1 relative w-full md:w-auto"
-      >
-        {/* Container for the effect */}
-        <div 
-            ref={containerRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="relative z-10 w-full aspect-4/5 max-w-[280px] sm:max-w-sm mx-auto md:ml-auto md:mr-0 bg-surface rounded-2xl overflow-hidden border border-white/5"
-        >
-           {/* Background: Black and White Image (Always Visible) */}
-           <img 
-             src={profileImg} 
-             alt="Facundo Bisio B&W" 
-             className="absolute inset-0 w-full h-full object-cover filter grayscale pointer-events-none" 
-           />
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 340px',
+          gap: '5rem',
+          alignItems: 'start',
+        }}>
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 style={{
+              fontFamily: 'var(--serif)',
+              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+              color: '#f0ede6',
+              lineHeight: 1.15,
+              marginBottom: '1.8rem',
+            }}>
+              Ingeniería en Software<br />
+              <em style={{ fontStyle: 'italic', color: 'var(--accent2)' }}>full-stack de verdad</em>
+            </h2>
 
-           {/* Foreground: Color Image (Revealed by Mask) */}
-           <motion.img 
-             style={{ maskImage, WebkitMaskImage: maskImage }}
-             src={profileImg} 
-             alt="Facundo Bisio Color" 
-             className="absolute inset-0 w-full h-full object-cover pointer-events-none" 
-           />
-           
-           {/* Hint text if not hovered */}
-           {!isHovered && (
-             <div className="absolute bottom-4 right-4 pointer-events-none opacity-50 text-xs text-white">
-                Hover to reveal
-             </div>
-           )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {[
+                'Soy Facundo Bisio, desarrollador de Córdoba, Argentina, actualmente cursando el 3° año de Ingeniería en Software en Universidad Siglo 21 y graduado como Técnico en Programación en ITS Villada.',
+                'Trabajo de punta a punta: diseño relacional con PostgreSQL + Prisma ORM, APIs REST con Node.js/Express y frontends en React con Tailwind. Mi proyecto flagship, Phantom-Stock, es un SaaS de inventario multi-tenant con autenticación JWT/RBAC y chatbot de WhatsApp impulsado por LLMs.',
+                'Como freelance desarrollé sitios para clientes en España — Confituras Palmelita (multi-idioma, SEO internacional, sub-1s) y EUSA Partners (plataforma de inversores con Optimistic UI y Core Web Vitals altos).',
+                'Actualmente profundizando en TypeScript, Docker y arquitecturas de integración con LLMs. Inglés B2 (Cambridge FCE) — trabajo con clientes internacionales con fluidez.',
+              ].map((p, i) => (
+                <p key={i} style={{ fontSize: 15, color: 'var(--muted)', lineHeight: 1.75 }}>{p}</p>
+              ))}
+            </div>
+
+            {/* Edu chips */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '2rem' }}>
+              {[
+                'Ingeniería en Software · Siglo 21',
+                'Técnico en Programación · ITS Villada',
+                'Cambridge FCE — Inglés B2',
+                'Agile / Scrum',
+              ].map(chip => (
+                <span
+                  key={chip}
+                  style={{
+                    fontFamily: 'var(--mono)',
+                    fontSize: 11,
+                    color: 'var(--muted)',
+                    border: '0.5px solid var(--line2)',
+                    padding: '3px 10px',
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Photo
+              fetchpriority="high" → le indica al browser que esta imagen
+              es LCP candidate y debe descargarse con alta prioridad.
+              decoding="async"     → no bloquea el hilo principal al decodificar.
+          */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '4/5',
+              border: '0.5px solid var(--line2)',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src={profileImg}
+              alt="Foto de perfil de Facundo Bisio, Full-Stack Developer"
+              fetchpriority="high"
+              decoding="async"
+              width="340"
+              height="425"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                filter: 'grayscale(20%)',
+                display: 'block',
+              }}
+            />
+          </motion.div>
         </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-10 right-10 w-full h-full border border-white/10 rounded-2xl z-0" />
-      </motion.div>
+      </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          #sobre-mi > div > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
-  );
+  )
 }

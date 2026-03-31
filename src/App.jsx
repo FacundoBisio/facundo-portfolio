@@ -1,21 +1,36 @@
 import { Suspense, lazy } from 'react'
 import Layout from './components/layout/Layout'
 import Hero from './components/sections/Hero'
-import GlobalUI from './components/ui/GlobalUI'
 import { UIProvider } from './context/UIContext'
+import GlobalUI from './components/ui/GlobalUI'
 import './index.css'
 
-// Lazy Load heavy components
-const About = lazy(() => import('./components/sections/About'))
-const Projects = lazy(() => import('./components/sections/Projects'))
+// Lazy load all sections below the fold
+const About      = lazy(() => import('./components/sections/About'))
 const Experience = lazy(() => import('./components/sections/Experience'))
-const Skills = lazy(() => import('./components/sections/Skills'))
-const Contact = lazy(() => import('./components/sections/Contact'))
+const Projects   = lazy(() => import('./components/sections/Projects'))
+const Skills     = lazy(() => import('./components/sections/Skills'))
+const Education  = lazy(() => import('./components/sections/Education'))
+const Contact    = lazy(() => import('./components/sections/Contact'))
 
-// Loading Fallback
 const SectionLoader = () => (
-  <div className="w-full h-96 flex items-center justify-center">
-    <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+  <div style={{
+    width: '100%',
+    height: 320,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottom: '0.5px solid var(--line)',
+  }}>
+    <div style={{
+      width: 28,
+      height: 28,
+      borderRadius: '50%',
+      border: '1.5px solid rgba(255,255,255,0.08)',
+      borderTopColor: 'var(--accent)',
+      animation: 'spin 0.8s linear infinite',
+    }} />
+    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
   </div>
 )
 
@@ -24,11 +39,12 @@ function App() {
     <UIProvider>
       <Layout>
         <Hero />
-        <Suspense fallback={<SectionLoader />}>    
+        <Suspense fallback={<SectionLoader />}>
           <About />
           <Experience />
           <Projects />
           <Skills />
+          <Education />
           <Contact />
         </Suspense>
       </Layout>

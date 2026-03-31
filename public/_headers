@@ -1,0 +1,29 @@
+# Vercel / Netlify headers — mejora el score Performance de Lighthouse
+# Los assets con hash en el nombre son immutables; el resto con cache corto.
+
+# JS y CSS con hash (Vite los genera automáticamente en build)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Imágenes estáticas
+/*.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/*.jpg
+/*.jpeg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# SVG (favicons)
+/*.svg
+  Cache-Control: public, max-age=86400
+
+# Fonts (si alguna vez las hosteas localmente)
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML nunca debe cachearse para que siempre sirva la última versión
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/
+  Cache-Control: no-cache, no-store, must-revalidate

@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Download } from 'lucide-react'
-import Toast from '../ui/Toast'
+import { Download, Menu, X } from 'lucide-react'
 
 const links = [
-  { href: '#inicio', label: 'Home' },
-  { href: '#proyectos', label: 'Projects' },
-  { href: '#experiencia', label: 'Experience' },
-  { href: '#habilidades', label: 'Skills' },
-  { href: '#contacto', label: 'Contact' },
+  { href: '#inicio',      label: 'Inicio' },
+  { href: '#experiencia', label: 'Experiencia' },
+  { href: '#proyectos',   label: 'Proyectos' },
+  { href: '#skills',      label: 'Skills' },
+  { href: '#contacto',    label: 'Contacto' },
 ]
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [toast, setToast] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -22,92 +20,166 @@ export default function Navbar() {
   }, [])
 
   const handleDownload = () => {
-    const link = document.createElement('a')
-    link.href = '/FACUNDO BISIO - CV .docx'
-    link.download = 'FACUNDO BISIO - CV .docx'
-    document.body.appendChild(link)
-    link.click()
-    link.remove()
-    setToast(true)
+    const a = document.createElement('a')
+    a.href     = '/Facundo_Bisio_CV.docx'
+    a.download = 'Facundo_Bisio_CV.docx'
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
   }
 
   return (
-    <>
-      <header
-        className={`sticky top-0 z-50 bg-neutral-950 border-b border-neutral-800 ${
-          scrolled ? 'shadow-lg shadow-black/10' : ''
-        }`}
+    <nav style={{
+      position: 'fixed',
+      top: 0, left: 0, right: 0,
+      zIndex: 100,
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '1.1rem 2.5rem',
+      borderBottom: '0.5px solid var(--line)',
+      background: scrolled ? 'rgba(10,10,11,0.96)' : 'rgba(10,10,11,0.88)',
+      backdropFilter: 'blur(12px)',
+      transition: 'background 0.3s',
+    }}>
+      {/* Logo */}
+      <span style={{
+        fontFamily: 'var(--mono)',
+        fontSize: 13,
+        color: 'var(--accent)',
+        letterSpacing: '0.05em',
+      }}>
+        fb.dev
+      </span>
+
+      {/* Desktop links */}
+      <ul style={{
+        display: 'flex',
+        gap: '2.2rem',
+        listStyle: 'none',
+        margin: 0,
+        padding: 0,
+      }} className="hidden-mobile">
+        {links.map(l => (
+          <li key={l.href}>
+            <a
+              href={l.href}
+              style={{
+                fontFamily: 'var(--mono)',
+                fontSize: 12.5,
+                fontWeight: 500,
+                color: 'var(--muted)',
+                textDecoration: 'none',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.target.style.color = 'var(--text)'}
+              onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* CV button */}
+      <button
+        onClick={handleDownload}
+        className="hidden-mobile"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.45rem',
+          border: '0.5px solid var(--line2)',
+          background: 'transparent',
+          color: 'var(--muted)',
+          fontFamily: 'var(--mono)',
+          fontSize: 12,
+          padding: '0.55rem 1.1rem',
+          cursor: 'pointer',
+          letterSpacing: '0.05em',
+          transition: 'border-color 0.2s, color 0.2s',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text)'; e.currentTarget.style.color = 'var(--text)'; }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--muted)'; }}
       >
-        <nav className="container flex h-16 items-center px-6 md:px-12">
-          {/* BRAND (Left) */}
-          <div className="flex-1">
-             <a href="#inicio" className="font-semibold tracking-tight inline-flex items-center gap-2 pl-2">
-              <img
-                src="/icono.jpg"   
-                alt="Foto de Facundo Bisio"
-                className="h-8 w-8 rounded-full ring-1 ring-white/10 shadow"
-                loading="lazy"
-              />
-              <span>Facundo Bisio</span>
-             </a>
-          </div>
+        <Download size={13} />
+        Download CV
+      </button>
 
-          {/* Desktop Links (Center) */}
-          <div className="hidden md:flex flex-1 justify-center items-center gap-6">
-            <a href="#inicio" className="nav-link">Home</a>
-            <a href="#sobre-mi" className="nav-link">About</a>
-            <a href="#experiencia" className="nav-link">Experience</a>
-            <a href="#contacto" className="nav-link">Contact</a>
-          </div>
+      {/* Mobile toggle */}
+      <button
+        className="show-mobile"
+        onClick={() => setOpen(!open)}
+        style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer' }}
+        aria-label="Menú"
+      >
+        {open ? <X size={20} /> : <Menu size={20} />}
+      </button>
 
-          {/* Actions (Right) */}
-          <div className="hidden md:flex flex-1 justify-end">
-            <button
-              onClick={handleDownload}
-              className="btn-ghost btn-cv inline-flex items-center gap-2"
+      {/* Mobile menu */}
+      {open && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0, right: 0,
+          background: 'rgba(10,10,11,0.98)',
+          borderBottom: '0.5px solid var(--line)',
+          padding: '1.5rem 2.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.2rem',
+        }}>
+          {links.map(l => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              style={{
+                fontFamily: 'var(--mono)',
+                fontSize: 13,
+                color: 'var(--muted)',
+                textDecoration: 'none',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
             >
-              <Download size={18} />
-              <span>Download CV</span>
-            </button>
-          </div>
+              {l.label}
+            </a>
+          ))}
+          <button
+            onClick={() => { handleDownload(); setOpen(false); }}
+            style={{
+              alignSelf: 'flex-start',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              border: '0.5px solid var(--line2)',
+              background: 'transparent',
+              color: 'var(--muted)',
+              fontFamily: 'var(--mono)',
+              fontSize: 12,
+              padding: '0.55rem 1.1rem',
+              cursor: 'pointer',
+              marginTop: '0.5rem',
+            }}
+          >
+            <Download size={13} /> Download CV
+          </button>
+        </div>
+      )}
 
-          {/* Toggle móvil */}
-          <div className="flex md:hidden flex-1 justify-end">
-             <button
-              onClick={() => setOpen(!open)}
-              aria-label="Abrir menú"
-            >
-              {open ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-        </nav>
-
-        {/* Menú móvil */}
-        {open && (
-          <div className="md:hidden border-t border-neutral-800 bg-neutral-950/95 backdrop-blur">
-            <div className="container py-3 flex flex-col gap-2.5 px-6">
-                <a href="#inicio" className="nav-link w-fit" onClick={() => setOpen(false)}>Home</a>
-                <a href="#sobre-mi" className="nav-link w-fit" onClick={() => setOpen(false)}>About</a>
-                <a href="#experiencia" className="nav-link w-fit" onClick={() => setOpen(false)}>Experience</a>
-                <a href="#contacto" className="nav-link w-fit" onClick={() => setOpen(false)}>Contact</a>
-              
-              <button
-                onClick={() => { handleDownload(); setOpen(false); }}
-                className="btn-ghost btn-brand w-fit inline-flex items-center gap-2 mt-2"
-              >
-                <Download size={18} />
-                <span>Download CV</span>
-              </button>
-            </div>
-          </div>
-        )}
-      </header>
-
-      <Toast
-        open={toast}
-        message="Descargando CV..."
-        onClose={() => setToast(false)}
-      />
-    </>
+      <style>{`
+        @media (max-width: 768px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile   { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .show-mobile { display: none !important; }
+          .hidden-mobile { display: flex !important; }
+        }
+      `}</style>
+    </nav>
   )
 }

@@ -1,57 +1,241 @@
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
+// ── Variantes reutilizables ──────────────────────────────────────────────────
+const fadeUp = {
+  hidden:  { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0  },
+}
+
+// Cada hijo de un staggerContainer se anima con delay incremental
+const staggerLeft = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.11, delayChildren: 0.05 } },
+}
+
+const staggerRight = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.35 } },
+}
+
+const ease = [0.16, 1, 0.3, 1]
+
+// ── Datos ────────────────────────────────────────────────────────────────────
+const stats = [
+  { num: '3+',  label: 'Años de experiencia'    },
+  { num: '10+', label: 'Proyectos en producción' },
+  { num: 'B2',  label: 'Inglés · Cambridge FCE'  },
+  { num: '∞',   label: 'Café consumido'          },
+]
+
+// ── Componente ───────────────────────────────────────────────────────────────
 export default function Hero() {
   return (
-    <section id="inicio" className="relative w-full min-h-[90vh] flex flex-col justify-center items-start pt-20">
-      
-      {/* Abstract Background Blur */}
-      <div className="absolute top-[-10%] right-[-5%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-
+    <section
+      id="inicio"
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        borderBottom: '0.5px solid var(--line)',
+      }}
+    >
+      {/* ── LEFT COLUMN ──────────────────────────────────────────────────── */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10"
+        variants={staggerLeft}
+        initial="hidden"
+        animate="visible"
+        style={{
+          padding: 'clamp(6rem, 10vw, 9rem) clamp(1.5rem, 4vw, 3.5rem) 5rem',
+          borderRight: '0.5px solid var(--line)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-xs font-medium text-secondary mb-6 md:mb-8">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          Available for new projects
-        </div>
+        {/* Tag */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease }}
+          style={{
+            fontFamily: 'var(--mono)',
+            fontSize: 11,
+            color: 'var(--accent)',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.7rem',
+          }}
+        >
+          <span style={{ width: 24, height: 1, background: 'var(--accent)', display: 'inline-block' }} />
+          Full-Stack Developer · Córdoba, AR
+        </motion.div>
 
-        <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9] text-white my-4 md:my-6">
-          Building <span className="gradient-text">polished</span> <br />
-          digital experiences.
-        </h1>
+        {/* H1 */}
+        <motion.h1
+          variants={fadeUp}
+          transition={{ duration: 0.75, ease }}
+          style={{
+            fontFamily: 'var(--serif)',
+            fontSize: 'clamp(2.8rem, 5vw, 4.8rem)',
+            lineHeight: 1.05,
+            color: '#f0ede6',
+            marginBottom: '1.8rem',
+          }}
+        >
+          Construyo<br />
+          productos <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>reales</em><br />
+          que escalan.
+        </motion.h1>
 
-        <p className="text-lg md:text-2xl text-secondary max-w-2xl leading-relaxed mb-8 md:mb-10">
-          I'm Facundo Bisio — a Junior Fullstack Engineer specialized in high-performance UIs, design systems, and creative development.
-        </p>
+        {/* Desc */}
+        <motion.p
+          variants={fadeUp}
+          transition={{ duration: 0.65, ease }}
+          style={{
+            fontFamily: 'var(--sans)',
+            fontSize: 15,
+            color: 'var(--muted)',
+            maxWidth: 440,
+            lineHeight: 1.75,
+            marginBottom: '2.8rem',
+          }}
+        >
+          Soy Facundo Bisio — Full-Stack Developer especializado en React, Node.js e integración de IA.
+          Construyo desde el schema de base de datos hasta la interfaz final.
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
-          <a href="#projects" className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 text-center">
-            <span className="relative z-10">View Projects</span>
-            <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
+        {/* CTAs */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease }}
+          style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+        >
+          <a
+            href="#proyectos"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              background: 'var(--accent)',
+              color: '#0a0a0b',
+              fontFamily: 'var(--mono)',
+              fontSize: 12.5,
+              fontWeight: 500,
+              padding: '0.8rem 1.6rem',
+              textDecoration: 'none',
+              letterSpacing: '0.05em',
+              transition: 'opacity 0.2s, transform 0.15s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.opacity = '1';    e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            Ver proyectos ↓
           </a>
-          
-          <a href="#contact" className="px-8 py-4 bg-surface text-white font-medium rounded-full border border-white/5 hover:bg-white/5 transition-colors text-center flex items-center justify-center">
-            Contact Me
+          <a
+            href="#contacto"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              border: '0.5px solid var(--line2)',
+              color: 'var(--muted)',
+              fontFamily: 'var(--mono)',
+              fontSize: 12.5,
+              padding: '0.8rem 1.6rem',
+              textDecoration: 'none',
+              letterSpacing: '0.05em',
+              transition: 'border-color 0.2s, color 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text)'; e.currentTarget.style.color = 'var(--text)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--muted)'; }}
+          >
+            Contacto →
           </a>
-        </div>
+        </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-12 left-0 text-white/30 text-sm flex items-center gap-4"
+      {/* ── RIGHT COLUMN ─────────────────────────────────────────────────── */}
+      <motion.div
+        variants={staggerRight}
+        initial="hidden"
+        animate="visible"
+        style={{
+          padding: 'clamp(6rem, 10vw, 9rem) clamp(1.5rem, 4vw, 3.5rem) 5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
       >
-        <div className="w-px h-12 bg-linear-to-b from-white/0 via-white/20 to-white/0" />
-        <span>Scroll to explore</span>
+        {/* Stats grid — cada celda tiene su propia animación */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.5, ease }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            border: '0.5px solid var(--line)',
+            marginBottom: '2.5rem',
+          }}
+        >
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease, delay: 0.38 + i * 0.09 }}
+              style={{
+                padding: '1.8rem 1.5rem',
+                borderRight:  i % 2 === 0 ? '0.5px solid var(--line)' : 'none',
+                borderBottom: i < 2       ? '0.5px solid var(--line)' : 'none',
+              }}
+            >
+              <div style={{
+                fontFamily: 'var(--serif)',
+                fontSize: 'clamp(2rem, 3vw, 2.6rem)',
+                color: 'var(--accent)',
+                lineHeight: 1,
+                marginBottom: '0.3rem',
+              }}>
+                {s.num}
+              </div>
+              <div style={{
+                fontFamily: 'var(--sans)',
+                fontSize: 12,
+                color: 'var(--muted)',
+                letterSpacing: '0.05em',
+                fontWeight: 500,
+              }}>
+                {s.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Availability */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.5, ease, delay: 0.75 }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.6rem',
+            fontFamily: 'var(--mono)',
+            fontSize: 12,
+            color: 'var(--muted)',
+          }}
+        >
+          <span className="dot-pulse" />
+          Disponible para trabajo remoto · {new Date().toLocaleDateString('es-AR', { month: 'short', year: 'numeric' })}
+        </motion.div>
       </motion.div>
+
+      {/* Responsive */}
+      <style>{`
+        @media (max-width: 768px) {
+          #inicio { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
-  );
+  )
 }

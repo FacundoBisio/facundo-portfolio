@@ -1,136 +1,98 @@
 @import "tailwindcss";
 
-/* 
-  Theme Configuration 
-  Using Tailwind v4 CSS-first configuration 
-*/
+/* ── THEME ── */
 @theme {
-  --color-background: #050505;
-  --color-surface: #121212;
-  --color-surface-hover: #1e1e1e;
-  --color-primary: #ededed;
-  --color-secondary: #a1a1aa;
-  --color-accent: #3b82f6; /* Electric Blue */
-  --color-border: #27272a;
+  --color-bg:      #0a0a0b;
+  --color-bg2:     #111113;
+  --color-bg3:     #1a1a1e;
+  --color-line:    rgba(255,255,255,0.07);
+  --color-line2:   rgba(255,255,255,0.13);
+  --color-text:    #e8e6e0;
+  --color-muted:   #7a7875;
+  --color-accent:  #c8f55a;
+  --color-accent2: #4af5c8;
+  --color-accent3: #f5a44a;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans:  'Manrope', system-ui, sans-serif;
+  --font-mono:  'DM Mono', monospace;
 }
 
-/* Base Styles */
+/* ── BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  font-family: var(--font-sans);
-  line-height: 1.5;
-  font-weight: 400;
+  --bg:      #0a0a0b;
+  --bg2:     #111113;
+  --bg3:     #1a1a1e;
+  --line:    rgba(255,255,255,0.07);
+  --line2:   rgba(255,255,255,0.13);
+  --text:    #e8e6e0;
+  --muted:   #7a7875;
+  --accent:  #c8f55a;
+  --accent2: #4af5c8;
+  --accent3: #f5a44a;
+  --serif:   'DM Serif Display', Georgia, serif;
+  --sans:    'Manrope', system-ui, sans-serif;
+  --mono:    'DM Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
   color-scheme: dark;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
-  cursor: default;
-}
-
-/* Typography Utilities */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
-  font-weight: 600;
-}
-
-p {
-  color: var(--color-secondary);
+  min-height: 100vh;
 }
 
 ::selection {
-  background-color: var(--color-accent);
-  color: white;
+  background: var(--accent);
+  color: #0a0a0b;
 }
 
-/* Lenis Scroll Smoothness */
-html.lenis,
-html.lenis body {
-  height: auto;
+/* ── SCROLL (Lenis) ── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  color: #f0ede6;
+  line-height: 1.1;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+/* ── FADE-IN ANIMATION ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
+/* ── PULSE DOT ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-.fade-mask-x {
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-/* Animated Gradient Text */
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    #3b82f6,
-    #8b5cf6,
-    #ec4899,
-    #f59e0b,
-    #10b981,
-    #3b82f6
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 8s ease-in-out infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+.dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
 }

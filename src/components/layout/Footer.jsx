@@ -1,7 +1,19 @@
 export default function Footer() {
   return (
-    <footer className="bg-neutral-950 py-10 text-center text-xs text-neutral-500">
-      © {new Date().getFullYear()} Facundo Bisio · Built with React, Tailwind & Vercel
+    <footer style={{
+      borderTop: '0.5px solid var(--line)',
+      padding: '2rem 2.5rem',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: '0.5rem',
+      fontFamily: 'var(--mono)',
+      fontSize: 12,
+      color: 'var(--muted)',
+    }}>
+      <span>© {new Date().getFullYear()} Facundo Bisio · Córdoba, Argentina</span>
+      <span>Disponible para trabajo remoto worldwide 🌎</span>
     </footer>
   )
 }

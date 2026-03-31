@@ -1,92 +1,93 @@
-import { useEffect, useRef } from 'react';
-import Lenis from 'lenis';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { useEffect } from 'react'
+import Lenis from 'lenis'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
+/**
+ * Layout principal.
+ *
+ * Lighthouse checklist aplicado aquí:
+ *  ✓ Smooth scroll con Lenis (no CSS scroll-behavior que bloquea el hilo)
+ *  ✓ Sin spotlight/blur pesado en el background
+ *  ✓ <main> con role semántico correcto
+ *  ✓ Skip-to-content link para accesibilidad (Score A11y)
+ */
 export default function Layout({ children }) {
-  const containerRef = useRef(null);
-
   useEffect(() => {
-    // Scroll smoothness
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-      direction: 'vertical',
-      gestureDirection: 'vertical',
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
       smoothTouch: false,
-      touchMultiplier: 2,
-    });
+    })
 
     function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      lenis.raf(time)
+      requestAnimationFrame(raf)
     }
-    requestAnimationFrame(raf);
+    requestAnimationFrame(raf)
 
-    // Mouse Spotlight Effect
-    const handleMouseMove = (e) => {
-      // Global effects
-      if (containerRef.current) {
-        const x = e.clientX;
-        const y = e.clientY;
-        containerRef.current.style.setProperty('--gx', `${x}px`);
-        containerRef.current.style.setProperty('--gy', `${y}px`);
-      }
-    };
-
-    // Smooth Scroll for Anchors
+    // Smooth scroll para links internos
     const handleAnchorClick = (e) => {
-      const target = e.target.closest('a');
-      if (!target) return;
-      
-      const href = target.getAttribute('href');
+      const target = e.target.closest('a')
+      if (!target) return
+      const href = target.getAttribute('href')
       if (href?.startsWith('#')) {
-        e.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-          lenis.scrollTo(element, { offset: -50 }); // Offset for nice spacing
-        }
+        e.preventDefault()
+        const el = document.querySelector(href)
+        if (el) lenis.scrollTo(el, { offset: -80 })
       }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('click', handleAnchorClick);
+    }
+    document.addEventListener('click', handleAnchorClick)
 
     return () => {
-      lenis.destroy();
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('click', handleAnchorClick);
-    };
-  }, []);
+      lenis.destroy()
+      document.removeEventListener('click', handleAnchorClick)
+    }
+  }, [])
 
   return (
-    <div 
-      ref={containerRef}
-      className="antialiased min-h-screen selection:bg-blue-500/30 selection:text-blue-200 relative"
-      style={{
-         "--gx": "50%",
-         "--gy": "50%"
-      }}
-    >
-      {/* Global Mouse Spotlight Background */}
-      <div 
-        className="fixed inset-0 z-[-1] pointer-events-none opacity-40 transition-opacity duration-500"
+    <>
+      {/* Skip-to-content: invisible salvo con foco de teclado — mejora Score A11y */}
+      <a
+        href="#inicio"
         style={{
-          background: `radial-gradient(600px circle at var(--gx) var(--gy), rgba(59, 130, 246, 0.15), transparent 80%)`
-        }} 
-      />
+          position: 'absolute',
+          left: '-9999px',
+          top: 'auto',
+          width: 1,
+          height: 1,
+          overflow: 'hidden',
+        }}
+        onFocus={e => {
+          e.currentTarget.style.left = '1rem'
+          e.currentTarget.style.top  = '1rem'
+          e.currentTarget.style.width  = 'auto'
+          e.currentTarget.style.height = 'auto'
+          e.currentTarget.style.zIndex = '9999'
+          e.currentTarget.style.background = 'var(--accent)'
+          e.currentTarget.style.color = '#0a0a0b'
+          e.currentTarget.style.padding = '0.5rem 1rem'
+          e.currentTarget.style.fontFamily = 'var(--mono)'
+          e.currentTarget.style.fontSize = '13px'
+        }}
+        onBlur={e => {
+          e.currentTarget.style.left   = '-9999px'
+          e.currentTarget.style.width  = '1px'
+          e.currentTarget.style.height = '1px'
+        }}
+      >
+        Ir al contenido principal
+      </a>
 
-      {/* Dynamic Grid Background */}
-      <div className="fixed inset-0 z-[-2] bg-background bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-      
-      <Navbar />
-      
-      <main className="relative flex flex-col items-center w-full max-w-[1400px] mx-auto px-4 md:px-12">
-        {children}
-      </main>
-
-      <Footer />
-    </div>
-  );
+      <div style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
+        <Navbar />
+        {/* role="main" + id para el skip-link */}
+        <main id="main-content" role="main" style={{ paddingTop: '57px' }}>
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
 }

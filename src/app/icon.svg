@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0C0C0A"/>
+
+  <!-- Geometric "F" lettermark — built from three precise rectangles -->
+  <!-- Vertical stem -->
+  <rect x="8.5" y="7.5" width="3" height="17" rx="1" fill="#D4913A"/>
+  <!-- Top arm (full width) -->
+  <rect x="8.5" y="7.5" width="15" height="3" rx="1" fill="#D4913A"/>
+  <!-- Middle arm (shorter) -->
+  <rect x="8.5" y="14.5" width="11" height="3" rx="1" fill="#D4913A"/>
+
+  <!-- Amber accent dot — bottom right -->
+  <circle cx="23.5" cy="23.5" r="2" fill="#D4913A" opacity="0.55"/>
+</svg>

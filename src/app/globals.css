@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+@theme {
+  --color-base:         #0C0C0A;
+  --color-surface:      #141412;
+  --color-overlay:      #1C1C19;
+  --color-primary:      #F0EDE6;
+  --color-muted:        #8A8480;
+  --color-accent:       #D4913A;
+  --color-accent-light: #F5C96A;
+
+  --font-display: var(--font-bricolage), Georgia, serif;
+  --font-sans:    var(--font-jakarta), system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains), monospace;
+}
+
+/* ── CSS Variables (for inline styles & calc) ── */
+:root {
+  --bg:           #0C0C0A;
+  --bg2:          #141412;
+  --bg3:          #1C1C19;
+  --text:         #F0EDE6;
+  --muted:        #8A8480;
+  --accent:       #D4913A;
+  --accent-light: #F5C96A;
+  --line:         rgba(240, 237, 230, 0.06);
+  --line2:        rgba(240, 237, 230, 0.11);
+  --display:      var(--font-bricolage), Georgia, serif;
+  --sans:         var(--font-jakarta), system-ui, sans-serif;
+  --mono:         var(--font-jetbrains), monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ── */
+html {
+  /* Lenis handles smooth scrolling — keep auto to avoid conflicts */
+  scroll-behavior: auto;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Amber radial glow — light source from above */
+  background:
+    radial-gradient(ellipse 90% 40% at 50% -5%, rgba(212, 145, 58, 0.10) 0%, transparent 65%),
+    #0C0C0A;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* Creates stacking context so z-index: -1 children sit above bg but below content */
+  isolation: isolate;
+}
+
+/* ── 3D Perspective grid (CSS-only, 0 JS) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(240, 237, 230, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 237, 230, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  /* Tilt the flat grid into a 3D floor plane */
+  transform: perspective(500px) rotateX(48deg);
+  transform-origin: 50% 72%;
+  /* Fade: invisible at horizon (top) and at foot (bottom) */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.55) 22%,
+    rgba(0,0,0,0.55) 68%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.55) 22%,
+    rgba(0,0,0,0.55) 68%,
+    transparent 100%
+  );
+}
+
+/* ── Grain noise overlay (what Linear / Vercel use) ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reduce grid intensity on mobile — perspective is subtle on small screens */
+@media (max-width: 640px) {
+  body::before { opacity: 0.5; }
+}
+
+img { max-width: 100%; }
+a   { color: inherit; }
+
+::selection {
+  background: var(--accent);
+  color: #0C0C0A;
+}
+
+/* ── Pulse animation ── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+.dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* ── Hover utilities (CSS-only, safe for Server Components) ── */
+.project-card {
+  transition: background 0.2s;
+}
+.project-card:not(.project-card--featured):hover {
+  background: var(--bg2);
+}
+
+.contact-row {
+  transition: background 0.18s, padding-inline 0.18s;
+}
+.contact-row:hover {
+  background: var(--bg2);
+  padding-inline: 0.6rem;
+}
+
+.link-accent { transition: opacity 0.18s; }
+.link-accent:hover { opacity: 0.65; }
+
+.link-muted { transition: color 0.18s; }
+.link-muted:hover { color: var(--text) !important; }
+
+/* ── Section inner wrapper ── */
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem;
+}
+
+/* ── Hero ── */
+.hero-grid {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 0.5px solid var(--line);
+}
+.hero-left {
+  padding: 7rem 1.25rem 3.5rem;
+  border-bottom: 0.5px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-right {
+  padding: 3rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── About ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ── Experience ── */
+.exp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 0.5px solid var(--line);
+  padding: 2rem 0;
+  gap: 0.8rem;
+}
+.deep-dive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* ── Projects ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 0.5px solid var(--line);
+}
+
+/* ── Skills ── */
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ── Education ── */
+.edu-grid-2 { display: grid; grid-template-columns: 1fr; }
+.edu-grid-3 { display: grid; grid-template-columns: 1fr; }
+
+/* ── Contact ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ════════════════════════════
+   TABLET  ≥ 640px
+   ════════════════════════════ */
+@media (min-width: 640px) {
+  .section-inner { padding: 5rem 2rem; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .edu-grid-2    { grid-template-columns: 1fr 1fr; }
+}
+
+/* ════════════════════════════
+   DESKTOP  ≥ 900px
+   ════════════════════════════ */
+@media (min-width: 900px) {
+  .section-inner { padding: 6rem 2.5rem; }
+
+  /* Hero two-column */
+  .hero-grid { grid-template-columns: 1fr 1fr; }
+  .hero-left {
+    padding: clamp(6rem, 10vw, 9rem) clamp(1.5rem, 4vw, 3.5rem) 5rem;
+    border-right:  0.5px solid var(--line);
+    border-bottom: none;
+  }
+  .hero-right {
+    padding: clamp(6rem, 10vw, 9rem) clamp(1.5rem, 4vw, 3.5rem) 5rem;
+  }
+
+  .about-grid     { grid-template-columns: 1fr 300px; gap: 5rem; }
+  .exp-row        { grid-template-columns: 190px 1fr; gap: 0; padding: 2.5rem 0; }
+  .deep-dive-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid  { grid-template-columns: repeat(2, 1fr); }
+  .skills-layout  { grid-template-columns: 260px 1fr; gap: 5rem; }
+  .edu-grid-2     { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .edu-grid-3     { grid-template-columns: 1fr 1fr 1fr; gap: 4rem; }
+  .contact-grid   { grid-template-columns: 1fr 1fr; gap: 5rem; }
+
+  .project-card--featured { grid-column: span 2; }
+}
+
+/* ════════════════════════════
+   ACCESSIBILITY
+   ════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill background effects */
+  body::before,
+  body::after { display: none; }
+
+  /* Kill all transitions and animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto   !important;
+  }
+
+  /* dot-pulse stays visible but static */
+  .dot-pulse { animation: none; }
+}

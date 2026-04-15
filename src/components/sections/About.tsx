@@ -6,14 +6,15 @@ const chips = [
   'Ingeniería en Software · Siglo 21',
   'Técnico en Programación · ITS Villada',
   'Cambridge FCE — Inglés B2',
+  'Next.js · TypeScript',
   'Agile / Scrum',
 ]
 
 const paragraphs = [
   'Soy Facundo Bisio, desarrollador de Córdoba, Argentina, actualmente cursando el 3° año de Ingeniería en Software en Universidad Siglo 21 y graduado como Técnico en Programación en ITS Villada.',
-  'Trabajo de punta a punta: diseño relacional con PostgreSQL + Prisma ORM, APIs REST con Node.js/Express y frontends en React con Tailwind. Mi proyecto flagship, Phantom-Stock, es un SaaS de inventario multi-tenant con autenticación JWT/RBAC y chatbot de WhatsApp impulsado por LLMs.',
+  'Trabajo de punta a punta: diseño relacional con PostgreSQL + Prisma ORM, APIs REST con Node.js/Express, frontends en Next.js con TypeScript e integración de IA con LLMs. Mi proyecto flagship, Phantom-Stock, es un SaaS de inventario multi-tenant con autenticación JWT/RBAC y chatbot de WhatsApp impulsado por LLMs.',
   'Como freelance desarrollé sitios para clientes en España — Confituras Palmelita (multi-idioma, SEO internacional, sub-1s) y EUSA Partners (plataforma de inversores con Optimistic UI y Core Web Vitals altos).',
-  'Actualmente profundizando en TypeScript, Docker y arquitecturas de integración con LLMs. Inglés B2 (Cambridge FCE) — trabajo con clientes internacionales con fluidez.',
+  'Especializado en Next.js, TypeScript e integración de LLMs. Inglés B2 (Cambridge FCE) — trabajo con clientes internacionales con fluidez.',
 ]
 
 export default function About() {

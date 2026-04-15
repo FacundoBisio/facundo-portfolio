@@ -23,7 +23,9 @@ const skillGroups: SkillGroup[] = [
   {
     label: 'Frontend — 3+ años',
     skills: [
+      { name: 'Next.js',      level: 'strong' },
       { name: 'React',        level: 'strong' },
+      { name: 'TypeScript',   level: 'strong' },
       { name: 'Tailwind CSS', level: 'strong' },
       { name: 'Framer Motion' },
       { name: 'Zustand' },
@@ -45,7 +47,7 @@ const skillGroups: SkillGroup[] = [
   {
     label: 'IA & Automatización — 1 año',
     skills: [
-      { name: 'LLM Integration',     level: 'med' },
+      { name: 'LLM Integration',      level: 'med' },
       { name: 'WhatsApp Business API', level: 'med' },
       { name: 'Prompt Engineering' },
     ],
@@ -55,6 +57,7 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: 'Git / GitHub' },
       { name: 'Vercel' },
+      { name: 'AWS Lambda' },
       { name: 'Render' },
       { name: 'FTP / DNS' },
       { name: 'Docker (básico)' },
@@ -68,7 +71,6 @@ const skillGroups: SkillGroup[] = [
       { name: 'JSON-LD' },
       { name: 'Open Graph' },
       { name: 'Core Web Vitals' },
-      { name: 'TypeScript' },
       { name: 'Python (básico)' },
     ],
   },
@@ -132,7 +134,7 @@ export default function Skills() {
               Foco en código limpio, rendimiento real y productos que se pueden mantener.
             </p>
             <p style={{ fontSize: 'clamp(13px, 2.5vw, 14px)', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '1.2rem' }}>
-              Profundizando en TypeScript, Docker y arquitecturas de integración con LLMs.
+              Especializado en Next.js, TypeScript e integración de LLMs en productos SaaS B2B.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--muted)' }}>
               <span className="dot-pulse" />

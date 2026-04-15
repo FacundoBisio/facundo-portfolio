@@ -65,7 +65,7 @@ export default function Hero() {
           }}
         >
           <span style={{ width: 20, height: 1, background: 'var(--accent)', display: 'inline-block', flexShrink: 0 }} />
-          Full-Stack Developer · Córdoba, AR
+          Full-Stack Developer · Next.js · TypeScript · AI — Córdoba, AR
         </motion.div>
 
         {/* H1 — word-by-word blur-in */}
@@ -123,7 +123,7 @@ export default function Hero() {
             marginBottom: '2.2rem',
           }}
         >
-          Soy Facundo Bisio — Full-Stack Developer especializado en React, Node.js
+          Soy Facundo Bisio — Full-Stack Developer especializado en Next.js, TypeScript
           e integración de IA. Construyo desde el schema de base de datos hasta la interfaz final.
         </motion.p>
 

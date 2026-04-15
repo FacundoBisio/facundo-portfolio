@@ -34,12 +34,13 @@ export const experiences: Experience[] = [
     link: 'https://stock-manager-sigma-seven.vercel.app/',
     linkLabel: 'stock-manager-sigma-seven.vercel.app',
     bullets: [
-      'Arquitecté un SaaS de inventario de punta a punta: diseño relacional con PostgreSQL + Prisma ORM, API REST y dashboard en React con Recharts.',
-      'Implementé sistema de auth multi-tenant con JWT y control de acceso basado en roles (RBAC).',
-      'Integré flujos conversacionales LLM conectados nativamente a la WhatsApp Business API — automatizando soporte, ingesta de datos y actualizaciones de inventario por lenguaje natural.',
-      'Optimicé rendimiento del frontend para datasets grandes: filtrado dinámico, visualización de datos y exportación a Excel.',
+      'Diseñé y desarrollé un SaaS completo de gestión de inventario desde cero: DB relacional (PostgreSQL + Prisma ORM), API REST y dashboard en React.',
+      'Construí un sistema JWT multi-tenant con control de acceso basado en roles (RBAC) y gestión segura de sesiones.',
+      'Integré flujos conversacionales con LLMs conectados nativamente a WhatsApp Business API — automatizando soporte al cliente, ingesta de datos y actualizaciones de inventario por lenguaje natural.',
+      'Optimicé el rendimiento frontend para grandes volúmenes: filtrado dinámico, visualización con Recharts y exportación a Excel.',
+      'Desplegué el backend serverless en AWS Lambda con Prisma ORM — eliminando la dependencia de servidores dedicados y optimizando costos con escalado automático por demanda.',
     ],
-    tags: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Prisma ORM', 'JWT / RBAC', 'LLMs', 'WhatsApp API', 'Vercel', 'Render'],
+    tags: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Prisma ORM', 'JWT / RBAC', 'LLMs', 'WhatsApp API', 'AWS Lambda', 'Vercel'],
     deepDive: {
       problems: [
         'Stock gestionado en hojas de cálculo sin control en tiempo real',
@@ -96,10 +97,11 @@ export const experiences: Experience[] = [
     link: 'https://tienda-mates.vercel.app/',
     linkLabel: 'tienda-mates.vercel.app',
     bullets: [
-      'Plataforma e-commerce completa — catálogo de productos, carrito, checkout y gestión de pedidos — desarrollada en solitario.',
-      'Estado global con Zustand: sincronización del carrito en tiempo real y reducción de complejidad de componentes en ~40%.',
+      'Desarrollé una plataforma e-commerce completa con Next.js — catálogo, carrito, checkout y gestión de pedidos — aprovechando SSR y SSG para tiempos de carga optimizados y mejor posicionamiento SEO.',
+      'Implementé gestión de estado global con Zustand para sincronización de carrito en tiempo real, reduciendo la complejidad de componentes ~40%.',
+      'Optimicé el rendimiento con next/image para carga lazy de productos, rutas dinámicas por categoría y code splitting automático — logrando scores altos en Core Web Vitals (LCP, CLS, FID).',
     ],
-    tags: ['React', 'Node.js', 'Express', 'Tailwind CSS', 'Zustand', 'Vercel'],
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Context API', 'Vercel'],
   },
   {
     date: 'Mar 2024 — Dic 2024',

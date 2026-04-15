@@ -22,8 +22,8 @@ export const projects: Project[] = [
     num: '02',
     title: 'FFMates E-Commerce',
     subtitle:
-      'Tienda online completa con catálogo, carrito (Zustand), checkout y gestión de órdenes. Estado global en tiempo real, sin prop-drilling. Desarrollado end-to-end en solitario.',
-    tags: ['React', 'Node.js', 'Zustand', 'Tailwind CSS'],
+      'Plataforma e-commerce completa migrada a Next.js con TypeScript — catálogo, carrito (Zustand), checkout y gestión de pedidos. SSR/SSG para tiempos de carga optimizados y mejor SEO, next/image para lazy loading de productos, rutas dinámicas por categoría y code splitting automático. Altos scores en Core Web Vitals (LCP, CLS, FID). Desarrollado end-to-end en solitario.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Context API', 'Vercel'],
     live: 'https://tienda-mates.vercel.app/',
   },
   {

@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { SmoothScroll } from '@/components/motion/SmoothScroll'
+import { BackgroundGrid } from '@/components/motion/BackgroundGrid'
 
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body>
         <SmoothScroll />
+        <BackgroundGrid />
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>

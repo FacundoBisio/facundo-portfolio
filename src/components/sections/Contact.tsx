@@ -1,93 +1,65 @@
-import { FadeIn } from '@/components/motion/FadeIn'
-import { SectionLabel } from '@/components/ui/SectionLabel'
-import { SITE } from '@/lib/site'
+import { useTranslations } from 'next-intl'
+import { ArrowUpRightIcon } from 'lucide-react'
 
-const contactLinks = [
-  { type: 'Email',     label: SITE.email,                          href: `mailto:${SITE.email}` },
-  { type: 'LinkedIn',  label: 'linkedin.com/in/facundo-bisio',     href: SITE.linkedin },
-  { type: 'GitHub',    label: 'github.com/FacundoBisio',           href: SITE.github },
-  { type: 'Teléfono',  label: SITE.phone,                         href: `tel:${SITE.phone.replace(/\s/g, '')}` },
-]
+import { SITE } from '@/content/site'
+import { buttonVariants } from '@/components/ui/button'
+import { CvLink } from '@/components/layout/CvLink'
+import { cn } from '@/lib/utils'
+import { Section, SectionHeader, TWO_COL } from './Section'
 
-export default function Contact() {
+const display = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')
+
+export function Contact() {
+  const t = useTranslations('contact')
+  const rows = [
+    { key: 'phone', href: `tel:${SITE.phone.replace(/[^+\d]/g, '')}`, text: SITE.phone, external: false },
+    { key: 'linkedin', href: SITE.linkedin, text: display(SITE.linkedin), external: true },
+    { key: 'github', href: SITE.github, text: display(SITE.github), external: true },
+  ] as const
+
   return (
-    <section id="contacto" style={{ borderBottom: '0.5px solid var(--line)' }}>
-      <div className="section-inner">
-        <SectionLabel>Contacto</SectionLabel>
+    <Section id="contact">
+      <SectionHeader id="contact" label={t('label')} title={t('title')} intro={t('body')} />
 
-        <div className="contact-grid">
+      <div className={cn(TWO_COL, 'mt-10 lg:mt-14')}>
+        <div className="flex min-w-0 flex-col gap-10 min-[900px]:col-start-2">
+          <a
+            href={`mailto:${SITE.email}`}
+            className="flex min-h-11 w-fit max-w-full items-center font-display text-[clamp(1.5rem,6vw,3.25rem)] leading-tight [overflow-wrap:anywhere] underline decoration-line-strong decoration-1 underline-offset-[0.15em] transition-colors duration-(--dur-fast) ease-(--ease-out) hover:decoration-primary"
+          >
+            <span className="sr-only">{t('email')}: </span>
+            {SITE.email}
+          </a>
 
-          {/* Left */}
-          <FadeIn>
-            <h2 style={{
-              fontFamily: 'var(--display)',
-              fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
-              color: 'var(--text)',
-              lineHeight: 1.15,
-              marginBottom: '1.2rem',
-            }}>
-              Hablemos de tu{' '}
-              <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>próximo</em>{' '}
-              proyecto
-            </h2>
-            <p style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: 'var(--muted)', lineHeight: 1.75, marginBottom: '0.8rem' }}>
-              Estoy disponible para roles full-stack remotos, freelance o proyectos de integración con IA.
-              Trabajo con clientes en Argentina, España y Latinoamérica.
-            </p>
-            <p style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: 'var(--muted)', lineHeight: 1.75 }}>
-              Respondo en menos de 24 horas — en español o inglés.
-            </p>
-          </FadeIn>
+          <dl className="border-b border-border">
+            {rows.map((row) => (
+              <div
+                key={row.key}
+                className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-x-6 border-t border-border sm:grid-cols-[8rem_minmax(0,1fr)]"
+              >
+                <dt className="text-label text-muted-foreground uppercase">{t(row.key)}</dt>
+                <dd className="min-w-0">
+                  <a
+                    href={row.href}
+                    {...(row.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="inline-flex min-h-12 max-w-full items-center gap-2 text-body [overflow-wrap:anywhere] transition-colors duration-(--dur-fast) ease-(--ease-out) hover:text-muted-foreground"
+                  >
+                    {row.text}
+                    {row.external && (
+                      <>
+                        <span className="sr-only"> ({t('external')})</span>
+                        <ArrowUpRightIcon aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
+                      </>
+                    )}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
 
-          {/* Right — link list */}
-          <FadeIn delay={0.12}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {contactLinks.map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="contact-row"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '1rem 0',
-                    borderBottom: '0.5px solid var(--line)',
-                    textDecoration: 'none',
-                    gap: '0.5rem',
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: 10,
-                    color: 'var(--muted)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    minWidth: 68,
-                    flexShrink: 0,
-                  }}>
-                    {link.type}
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--sans)',
-                    fontSize: 'clamp(12px, 3vw, 14px)',
-                    color: 'var(--text)',
-                    flex: 1,
-                    paddingLeft: '0.8rem',
-                    wordBreak: 'break-all',
-                  }}>
-                    {link.label}
-                  </span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 14, color: 'var(--accent)', flexShrink: 0 }}>↗</span>
-                </a>
-              ))}
-            </div>
-          </FadeIn>
-
+          <CvLink className={cn(buttonVariants({ variant: 'default' }), 'w-fit')}>{t('cv')}</CvLink>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

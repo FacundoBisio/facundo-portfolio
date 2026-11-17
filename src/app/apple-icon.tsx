@@ -8,7 +8,7 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          background: '#0C0C0A',
+          background: '#0E100C',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -18,12 +18,12 @@ export default function AppleIcon() {
           position: 'relative',
         }}
       >
-        {/* Subtle amber glow top-left */}
+        {/* Subtle lime glow top-left */}
         <div style={{
           position: 'absolute',
           top: -20, left: -20,
           width: 140, height: 140,
-          background: 'radial-gradient(circle, rgba(212,145,58,0.14) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(198, 242, 78,0.14) 0%, transparent 70%)',
           borderRadius: '50%',
           display: 'flex',
         }} />
@@ -34,19 +34,19 @@ export default function AppleIcon() {
           <div style={{
             position: 'absolute', left: 0, top: 0,
             width: 17, height: 95,
-            background: '#D4913A', borderRadius: 5,
+            background: '#C6F24E', borderRadius: 5,
           }} />
           {/* Top arm */}
           <div style={{
             position: 'absolute', left: 0, top: 0,
             width: 84, height: 17,
-            background: '#D4913A', borderRadius: 5,
+            background: '#C6F24E', borderRadius: 5,
           }} />
           {/* Middle arm */}
           <div style={{
             position: 'absolute', left: 0, top: 39,
             width: 62, height: 17,
-            background: '#D4913A', borderRadius: 5,
+            background: '#C6F24E', borderRadius: 5,
           }} />
         </div>
 
@@ -54,7 +54,7 @@ export default function AppleIcon() {
         <div style={{
           position: 'absolute', right: 32, bottom: 32,
           width: 14, height: 14,
-          background: '#D4913A',
+          background: '#C6F24E',
           borderRadius: '50%',
           opacity: 0.5,
           display: 'flex',

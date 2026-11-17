@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T12:31:41.197Z",
+  "title": "Design System: Facundo Bisio — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface"
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper"
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Mute"
+      },
+      "lime": {
+        "role": "primary",
+        "displayName": "Signal Lime"
+      },
+      "lime-deep": {
+        "role": "primary",
+        "displayName": "Pressed Lime"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line"
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Line"
+      },
+      "signal": {
+        "role": "tertiary",
+        "displayName": "Signal Red"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statement only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and case-study titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names, step names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max 68ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Dates, stack, status, captions, navigation, buttons."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The only easing."
+      },
+      {
+        "name": "dur-fast",
+        "value": "150ms",
+        "purpose": "Hover and press feedback."
+      },
+      {
+        "name": "dur-base",
+        "value": "250ms",
+        "purpose": "State changes."
+      },
+      {
+        "name": "dur-slow",
+        "value": "400ms",
+        "purpose": "Entrances."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "split",
+        "value": "900px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one primary action in view.",
+      "html": "<button class=\"ds-btn-primary\">DOWNLOAD CV</button>",
+      "css": ".ds-btn-primary{background:#C6F24E;color:#0E100C;font:400 12px/1 \"DM Mono\",ui-monospace,monospace;letter-spacing:.08em;height:44px;padding:0 22px;border:0;border-radius:2px;cursor:pointer;transition:background 150ms cubic-bezier(.22,1,.36,1)}.ds-btn-primary:hover{background:#A9D635}.ds-btn-primary:focus-visible{outline:2px solid #C6F24E;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action.",
+      "html": "<button class=\"ds-btn-outline\">GET IN TOUCH</button>",
+      "css": ".ds-btn-outline{background:transparent;color:#ECEFE4;font:400 12px/1 \"DM Mono\",ui-monospace,monospace;letter-spacing:.08em;height:44px;padding:0 22px;border:1px solid #3A4130;border-radius:2px;cursor:pointer;transition:background 150ms cubic-bezier(.22,1,.36,1)}.ds-btn-outline:hover{background:#1D2119}.ds-btn-outline:focus-visible{outline:2px solid #C6F24E;outline-offset:2px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Stack names and status.",
+      "html": "<span class=\"ds-chip\">Next.js</span>",
+      "css": ".ds-chip{display:inline-block;color:#979C8A;font:400 12px/1.4 \"DM Mono\",ui-monospace,monospace;letter-spacing:.04em;padding:3px 8px;border:1px solid #3A4130;border-radius:2px}"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat container on Surface.",
+      "html": "<div class=\"ds-panel\">Panel content</div>",
+      "css": ".ds-panel{background:#151812;color:#ECEFE4;border:1px solid #23281D;padding:24px;font:400 16px/1.65 Manrope,system-ui,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Working Notebook",
+    "overview": "A dark, editorial page that reads like the notes of someone who builds things: a serif voice for the statements, a plain sans for the explanation, and a mono for the facts. It is quiet on purpose. The products shown inside it are the loud part.",
+    "keyCharacteristics": [
+      "Dark only. Warm, slightly green near-black; never pure black, never pure white.",
+      "One accent (lime). It marks the single most important thing in view.",
+      "Serif display with a true italic; sans body; mono for facts.",
+      "Square corners and 1px hairlines; depth by tone, not by shadow.",
+      "Product media is the only large imagery."
+    ],
+    "rules": [
+      {
+        "name": "The One Lime Rule",
+        "body": "Lime covers no more than a tenth of any screen. If two lime things are visible at once, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mute Is For Metadata Rule",
+        "body": "A sentence a visitor should read is set in paper. Mute is for the facts around it.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Tint Rule",
+        "body": "No translucent colour washes, glows or gradients.",
+        "section": "colors"
+      },
+      {
+        "name": "The Real Italic Rule",
+        "body": "Italic is used only in DM Serif Display, which has one.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Emphasis Rule",
+        "body": "A heading may emphasise at most one word, and only when that word is the point.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fixed Floor Rule",
+        "body": "Body text is sized in rem, not scaled with the viewport.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tone Not Shadow Rule",
+        "body": "A layer above the page is raised with a strong line border and a dimmed backdrop. No shadow, no blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [],
+    "donts": []
+  }
+}

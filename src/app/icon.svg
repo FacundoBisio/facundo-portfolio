@@ -1,15 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Background -->
-  <rect width="32" height="32" rx="7" fill="#0C0C0A"/>
+  <!-- Same mark as apple-icon.tsx, scaled from 180 to 32: ink ground, lime "F", faint glow and dot -->
+  <defs>
+    <radialGradient id="glow" cx="8.9" cy="8.9" r="12.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C6F24E" stop-opacity="0.14"/>
+      <stop offset="0.7" stop-color="#C6F24E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#0E100C"/>
+  <rect width="32" height="32" rx="7" fill="url(#glow)"/>
 
-  <!-- Geometric "F" lettermark — built from three precise rectangles -->
   <!-- Vertical stem -->
-  <rect x="8.5" y="7.5" width="3" height="17" rx="1" fill="#D4913A"/>
-  <!-- Top arm (full width) -->
-  <rect x="8.5" y="7.5" width="15" height="3" rx="1" fill="#D4913A"/>
-  <!-- Middle arm (shorter) -->
-  <rect x="8.5" y="14.5" width="11" height="3" rx="1" fill="#D4913A"/>
+  <rect x="8" y="7.5" width="3" height="17" rx="0.9" fill="#C6F24E"/>
+  <!-- Top arm -->
+  <rect x="8" y="7.5" width="15" height="3" rx="0.9" fill="#C6F24E"/>
+  <!-- Middle arm -->
+  <rect x="8" y="14.4" width="11" height="3" rx="0.9" fill="#C6F24E"/>
 
-  <!-- Amber accent dot — bottom right -->
-  <circle cx="23.5" cy="23.5" r="2" fill="#D4913A" opacity="0.55"/>
+  <!-- Accent dot, bottom right -->
+  <circle cx="25" cy="25" r="1.25" fill="#C6F24E" opacity="0.5"/>
 </svg>

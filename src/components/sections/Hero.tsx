@@ -1,236 +1,57 @@
-'use client'
+import { useLocale, useTranslations } from 'next-intl'
+import { ArrowRightIcon } from 'lucide-react'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { Link } from '@/i18n/navigation'
+import { featuredProjects } from '@/content/projects'
+import type { Locale } from '@/content/types'
+import { buttonVariants } from '@/components/ui/button'
+import { CvLink } from '@/components/layout/CvLink'
+import { MediaSlideView } from '@/components/media/MediaSlideView'
+import { Container } from './Section'
 
-const ease = [0.16, 1, 0.3, 1] as const
-
-const fadeUp = {
-  hidden:  { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0  },
-}
-
-const staggerLeft  = { hidden: {}, visible: { transition: { staggerChildren: 0.11, delayChildren: 0.05  } } }
-const staggerRight = { hidden: {}, visible: { transition: { staggerChildren: 0.09, delayChildren: 0.35  } } }
-
-const titleContainer = {
-  hidden:  {},
-  visible: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
-}
-const titleChunk = {
-  hidden:  { opacity: 0, filter: 'blur(10px)', y: 14 },
-  visible: { opacity: 1, filter: 'blur(0px)',  y: 0   },
-}
-
-const H1_LINES: Array<{ text: string; accent?: boolean }> = [
-  { text: 'Construyo' },
-  { text: 'productos ' },
-  { text: 'reales', accent: true },
-  { text: 'que escalan.' },
-]
-
-const stats = [
-  { num: '3+',  label: 'Años de experiencia'    },
-  { num: '10+', label: 'Proyectos en producción' },
-  { num: 'B2',  label: 'Inglés · Cambridge FCE'  },
-  { num: '∞',   label: 'Café consumido'          },
-]
-
-export default function Hero() {
-  const reduced = useReducedMotion()
+/** Asymmetric: the statement on the left, the product being built now on the right. No stats. */
+export function Hero() {
+  const t = useTranslations('hero')
+  const locale = useLocale() as Locale
+  const project = featuredProjects[0]
+  const slide = project.media[0]
 
   return (
-    <section id="inicio" className="hero-grid">
+    <section aria-labelledby="hero-title">
+      <Container className="grid gap-12 pt-12 pb-16 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] min-[900px]:items-end min-[900px]:gap-16 lg:pt-20 lg:pb-24">
+        <div className="flex flex-col">
+          <h1 id="hero-title">
+            <span className="block text-label text-muted-foreground uppercase">
+              {t('name')} — {t('role')}
+            </span>
+            <span className="mt-6 block text-display">{t('statement')}</span>
+          </h1>
+          <p className="mt-8 max-w-[52ch] text-body">{t('value')}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <CvLink className={buttonVariants({ variant: 'default' })}>{t('ctaCv')}</CvLink>
+            <a href="#contact" className={buttonVariants({ variant: 'outline' })}>
+              {t('ctaContact')}
+            </a>
+          </div>
+          <p className="mt-8 text-label text-muted-foreground uppercase">{t('location')}</p>
+        </div>
 
-      {/* ── LEFT ── */}
-      <motion.div
-        className="hero-left"
-        variants={staggerLeft}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Tag */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.6, ease }}
-          style={{
-            fontFamily: 'var(--mono)',
-            fontSize: 'clamp(10px, 2.2vw, 11px)',
-            color: 'var(--accent)',
-            letterSpacing: '0.13em',
-            textTransform: 'uppercase',
-            marginBottom: '1.2rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.6rem',
-          }}
-        >
-          <span style={{ width: 20, height: 1, background: 'var(--accent)', display: 'inline-block', flexShrink: 0 }} />
-          Full-Stack Developer · Next.js · TypeScript · AI — Córdoba, AR
-        </motion.div>
-
-        {/* H1 — word-by-word blur-in */}
-        <motion.h1
-          variants={reduced ? fadeUp : titleContainer}
-          transition={reduced ? { duration: 0.01 } : undefined}
-          style={{
-            fontFamily: 'var(--display)',
-            fontSize: 'clamp(2.4rem, 7vw, 4.8rem)',
-            lineHeight: 1.05,
-            color: 'var(--text)',
-            marginBottom: '1.4rem',
-          }}
-        >
-          {reduced ? (
-            <>
-              Construyo<br />
-              productos{' '}
-              <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>reales</em><br />
-              que escalan.
-            </>
-          ) : (
-            <>
-              {H1_LINES.map((chunk, i) => (
-                <motion.span
-                  key={i}
-                  variants={titleChunk}
-                  transition={{ duration: 0.65, ease }}
-                  style={{
-                    display: 'inline',
-                    fontStyle: chunk.accent ? 'italic' : 'normal',
-                    color:     chunk.accent ? 'var(--accent)' : 'inherit',
-                  }}
-                >
-                  {chunk.text}
-                  {/* line breaks after line 0 and after line 2 (accent word inline with line 1) */}
-                  {i === 0 && <br />}
-                  {i === 2 && <br />}
-                </motion.span>
-              ))}
-            </>
-          )}
-        </motion.h1>
-
-        {/* Description */}
-        <motion.p
-          variants={fadeUp}
-          transition={{ duration: 0.65, ease }}
-          style={{
-            fontFamily: 'var(--sans)',
-            fontSize: 'clamp(13px, 3vw, 15px)',
-            color: 'var(--muted)',
-            maxWidth: 440,
-            lineHeight: 1.75,
-            marginBottom: '2.2rem',
-          }}
-        >
-          Soy Facundo Bisio — Full-Stack Developer especializado en Next.js, TypeScript
-          e integración de IA. Construyo desde el schema de base de datos hasta la interfaz final.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.6, ease }}
-          style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}
-        >
-          <a
-            href="#proyectos"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              background: 'var(--accent)', color: '#0C0C0A',
-              fontFamily: 'var(--mono)', fontSize: 'clamp(11px, 2.5vw, 12.5px)',
-              fontWeight: 600, padding: '0.75rem 1.4rem',
-              textDecoration: 'none', letterSpacing: '0.05em',
-              transition: 'opacity 0.2s, transform 0.15s',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.opacity = '1';    e.currentTarget.style.transform = 'translateY(0)' }}
-          >
-            Ver proyectos ↓
-          </a>
-          <a
-            href="#contacto"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              border: '0.5px solid var(--line2)', color: 'var(--muted)',
-              fontFamily: 'var(--mono)', fontSize: 'clamp(11px, 2.5vw, 12.5px)',
-              padding: '0.75rem 1.4rem', textDecoration: 'none',
-              letterSpacing: '0.05em', transition: 'border-color 0.2s, color 0.2s',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--text)'; e.currentTarget.style.color = 'var(--text)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--muted)' }}
-          >
-            Contacto →
-          </a>
-        </motion.div>
-      </motion.div>
-
-      {/* ── RIGHT ── */}
-      <motion.div
-        className="hero-right"
-        variants={staggerRight}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Stats grid */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            border: '0.5px solid var(--line)',
-            marginBottom: '2rem',
-          }}
-        >
-          {stats.map((s, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              transition={{ duration: 0.5, ease, delay: 0.38 + i * 0.09 }}
-              style={{
-                padding: 'clamp(1.2rem, 3vw, 1.8rem) clamp(1rem, 2.5vw, 1.5rem)',
-                borderRight:  i % 2 === 0 ? '0.5px solid var(--line)' : 'none',
-                borderBottom: i < 2       ? '0.5px solid var(--line)' : 'none',
-              }}
-            >
-              <div style={{
-                fontFamily: 'var(--display)',
-                fontSize: 'clamp(1.7rem, 4vw, 2.6rem)',
-                color: 'var(--accent)',
-                lineHeight: 1,
-                marginBottom: '0.3rem',
-              }}>
-                {s.num}
-              </div>
-              <div style={{
-                fontFamily: 'var(--sans)',
-                fontSize: 'clamp(10px, 2vw, 12px)',
-                color: 'var(--muted)',
-                letterSpacing: '0.04em',
-                fontWeight: 500,
-              }}>
-                {s.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Availability */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.75 }}
-          style={{
-            display: 'flex', alignItems: 'center', gap: '0.6rem',
-            fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--muted)',
-          }}
-        >
-          <span className="dot-pulse" />
-          Disponible para trabajo remoto ·{' '}
-          {new Date().toLocaleDateString('es-AR', { month: 'short', year: 'numeric' })}
-        </motion.div>
-      </motion.div>
-
+        {slide && (
+          <figure className="flex flex-col gap-3">
+            <MediaSlideView slide={slide} locale={locale} active priority />
+            <figcaption className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <span className="text-label text-muted-foreground uppercase">{t('featuredLabel')}</span>
+              <Link
+                href={`/work/${project.slug}`}
+                className="group inline-flex min-h-11 items-center gap-2 text-body font-semibold underline decoration-line-strong underline-offset-4 transition-colors duration-(--dur-fast) ease-(--ease-out) hover:decoration-current"
+              >
+                {project.name}
+                <ArrowRightIcon aria-hidden="true" className="size-4" />
+              </Link>
+            </figcaption>
+          </figure>
+        )}
+      </Container>
     </section>
   )
 }

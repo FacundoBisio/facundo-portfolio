@@ -1,87 +1,40 @@
-# Facundo Bisio — Full-Stack Developer
+# Facundo Bisio — Full-Stack Product Developer
 
-**Next.js · TypeScript · Node.js · AI Integration · PostgreSQL**
+Portfolio personal: [facundo-portfolio-two.vercel.app](https://facundo-portfolio-two.vercel.app). Inglés en `/`, español en `/es`.
 
-Córdoba, Argentina · Disponible para trabajo remoto · [facundo-portfolio-two.vercel.app](https://facundo-portfolio-two.vercel.app)
+Desarrollador full-stack orientado a producto, con 2+ años construyendo productos web de punta a punta (modelo de datos, APIs, interfaz, deploy e iteración) para clientes de Argentina y España. Hoy construyo y opero dos plataformas por suscripción para clientes que pagan, que salen a producción en diciembre de 2026. Córdoba, Argentina · UTC-3 · disponible para trabajo remoto.
 
----
+## Stack del sitio
 
-## Qué hago
+Next.js 15 (App Router) · React 19 · TypeScript estricto · Tailwind CSS v4 · shadcn/ui (Base UI) · next-intl · Motion.
 
-Construyo productos web de punta a punta: diseño de base de datos relacional, APIs REST, frontends en Next.js con TypeScript e integración de IA con LLMs. No entrego wireframes ni demos — entrego software en producción que funciona.
+- Copy: `src/i18n/messages/{en,es}.ts`. Proyectos y casos de estudio: `src/content/projects.ts`. Stack: `src/content/stack.ts`. Datos de contacto y CV: `src/content/site.ts`.
+- Diseño: `DESIGN.md` (tokens en `src/app/globals.css`). Producto y audiencia: `PRODUCT.md`.
+- CV por idioma en `public/cv/`.
 
-**3+ años de experiencia · 10+ proyectos en producción · Inglés B2 (Cambridge FCE)**
+## Media
 
----
+Los videos, capturas y diagramas de cada case study viven en `public/media/<slug>/` y se declaran en `src/content/projects.ts`. Mientras un slide no tiene `src`, el carrusel muestra un placeholder con el tipo de slide y su caption.
 
-## Proyectos destacados
+**Requisito:** ffmpeg en el `PATH` (`winget install Gyan.FFmpeg` en Windows, `brew install ffmpeg` en macOS, `sudo apt install ffmpeg` en Linux). El script corta con un mensaje claro si no lo encuentra.
 
-### [Phantom-Stock](https://stock-manager-sigma-seven.vercel.app/) — SaaS de gestión de inventario con IA
-Plataforma multi-tenant construida desde cero. PYMEs controlan su stock, generan reportes y atienden clientes directamente desde WhatsApp, con un chatbot impulsado por LLMs.
+**Grabar:** clips de 15 a 40 segundos del producto en uso, sin audio (se reproducen en silencio), a 1280 px de ancho o más. Las capturas, a la resolución de pantalla normal.
 
-- PostgreSQL + Prisma ORM + Node.js/Express + React + Recharts
-- Autenticación JWT con control de acceso por roles (RBAC)
-- Integración nativa con WhatsApp Business API y LLMs
-- Deploy serverless en AWS Lambda + Vercel
+**Procesar:**
 
-### [FFMates E-Commerce](https://tienda-mates.vercel.app/) — Tienda online completa
-Catálogo, carrito, checkout y gestión de pedidos. SSR/SSG con Next.js para carga rápida y SEO alto. Scores altos en Core Web Vitals (LCP, CLS, FID).
+```bash
+node scripts/optimize-media.mjs <slug> <archivo> [archivo…]
+# ejemplo
+node scripts/optimize-media.mjs ffmates ~/Desktop/checkout.mov ~/Desktop/cart.png
+```
 
-- Next.js · TypeScript · Tailwind CSS · Zustand · Vercel
+- Video (`.mov`, `.mp4`, `.m4v`, `.mkv`) → `<nombre>.mp4` (H.264), `<nombre>.webm` (VP9) y `<nombre>.webp` (poster, frame del segundo 1). 1280 px de ancho, sin pista de audio. Avisa si un clip pasa de 4 MB: recortalo o subí el `-crf` en el script.
+- Imagen (`.png`, `.jpg`, `.jpeg`, `.webp`, `.tif`) → `<nombre>.webp` y `<nombre>.avif`, como máximo 1280 px de ancho.
+- Los diagramas se pueden dejar en `.svg` directamente en `public/media/<slug>/`.
 
-### [Confituras Palmelita](https://confituras.palmelita.es/) — Sitio corporativo internacional
-Sitio multi-idioma para empresa española. Carga sub-1s, sin overhead de framework JS, SEO internacional con hreflang y deploy completo FTP/DNS.
+**Cargar:** en el slide correspondiente de `projects.ts`, completá `src` (el `.mp4` o la imagen), y para video también `webm` y `poster`, con rutas `/media/<slug>/<nombre>.<ext>`. Después borrá el `// TODO: record` de ese slide.
 
-- HTML5 · Tailwind v4 · PHP · SEO Internacional
-
-### [EUSA Partners](https://eusa-partners.com/) — Plataforma de captación de inversores
-Animaciones CSS premium, formularios con Optimistic UI, sanitización CORS y stack SEO técnico completo (JSON-LD, Open Graph) con scores altos en Core Web Vitals.
-
-- HTML5 · Tailwind v4 · PHP · JSON-LD
-
----
-
-## Experiencia
-
-| Período | Rol | Empresa |
-|---|---|---|
-| Mar 2026 – Presente | Full-Stack Developer & AI Integrator | Phantom-Stock (SaaS propio) |
-| Dic 2025 – Feb 2026 | Front-End Developer | Confituras Palmelita · España |
-| Oct 2025 – Dic 2025 | Front-End Developer | EUSA Partners · España |
-| Mar 2025 – Oct 2025 | Full-Stack Developer | FFMates E-Commerce |
-| Mar 2024 – Dic 2024 | Full-Stack Developer | Downisup Córdoba · ONG (Scrum) |
-| Jul 2024 – Oct 2024 | Software Development Intern | Kunan S.A. |
-
----
-
-## Stack técnico
-
-**Frontend** — Next.js 15, React, TypeScript, Tailwind CSS v4, Framer Motion, Zustand  
-**Backend** — Node.js, Express, REST APIs, AWS Lambda  
-**Base de datos** — PostgreSQL, Prisma ORM  
-**AI / Integraciones** — LLMs, WhatsApp Business API  
-**SEO & Performance** — Core Web Vitals, JSON-LD, Open Graph, SSR/SSG  
-**Herramientas** — Git, Vercel, Agile/Scrum, CI/CD
-
----
-
-## Formación
-
-- **Ingeniería en Software** — Universidad Siglo 21 (3° año en curso)
-- **Técnico en Programación** — ITS Villada (graduado)
-- **Inglés B2** — Cambridge FCE (High)
-
----
-
-## Contacto
-
-Disponible para proyectos freelance y posiciones full-time remotas.
-
-- **Portfolio**: [facundo-portfolio-two.vercel.app](https://facundo-portfolio-two.vercel.app)
-- **Email**: [facubisio433@gmail.com](mailto:facubisio433@gmail.com)
-- **LinkedIn**: [facundo-bisio-25a104247](https://www.linkedin.com/in/facundo-bisio-25a104247/)
-- **GitHub**: [@FacundoBisio](https://github.com/FacundoBisio)
-- **Tel**: +54 351 366-2570
+El video se reproduce solo cuando su slide está visible y se pausa al salir. Con `prefers-reduced-motion` no hay autoplay: se ve el poster con un botón de play.
 
 ---
 

@@ -37,7 +37,7 @@ export function Work() {
           {more.map((project) => {
             const link = project.links[0]
             return (
-              <li key={project.slug} className="grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <li key={project.slug} className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-2 py-6 sm:grid-cols-[minmax(0,1fr)_auto]">
                 {project.media.length > 0 && (
                   <div className="mb-4 sm:col-span-2">
                     <MediaCarousel slides={project.media} locale={locale} projectName={project.name} />

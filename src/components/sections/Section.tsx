@@ -7,7 +7,8 @@ export function Container({ className, ...props }: React.ComponentProps<'div'>) 
 }
 
 /** Narrow facts column beside a wide content column, from 900px; one column below. */
-export const TWO_COL = 'grid gap-x-12 min-[900px]:grid-cols-[12rem_minmax(0,1fr)]'
+// minmax(0,1fr) on phones too: an implicit auto track grows to its widest child (e.g. a carousel's thumbnail strip).
+export const TWO_COL = 'grid grid-cols-[minmax(0,1fr)] gap-x-12 min-[900px]:grid-cols-[12rem_minmax(0,1fr)]'
 
 /** Home section: anchor id, hairline above, 64px / 96px vertical space. */
 export function Section({

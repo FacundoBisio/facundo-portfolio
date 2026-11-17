@@ -41,23 +41,28 @@ export function Contact() {
 
           <a
             href={`mailto:${SITE.email}`}
-            className={cn(buttonVariants({ variant: 'default', size: 'lg' }), 'h-auto min-h-12 max-w-full py-3 normal-case [overflow-wrap:anywhere] whitespace-normal')}
+            className={cn(buttonVariants({ variant: 'default', size: 'lg' }), 'h-auto min-h-12 max-w-full py-3 normal-case whitespace-normal')}
           >
             <MailIcon aria-hidden="true" />
             <span className="sr-only">{t('email')}: </span>
-            <span className="text-base tracking-normal">{SITE.email}</span>
+            {/* If it still has to wrap on a narrow phone, break after the @, not mid-domain. */}
+            <span className="text-sm tracking-normal sm:text-base">
+              {SITE.email.split('@')[0]}@<wbr />
+              {SITE.email.split('@')[1]}
+            </span>
           </a>
 
-          <ul className="flex flex-wrap justify-center gap-2">
+          <ul className="flex max-w-full flex-wrap justify-center gap-2">
             {rows.map((row) => (
-              <li key={row.key}>
+              <li key={row.key} className="max-w-full">
                 <a
                   href={row.href}
                   {...(row.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                  className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'normal-case')}
+                  // max-w-full + truncate: the LinkedIn URL is wider than a phone-width card.
+                  className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'max-w-full normal-case')}
                 >
                   <span className="text-muted-foreground uppercase">{t(row.key)}</span>
-                  <span className="tracking-normal">{row.text}</span>
+                  <span className="min-w-0 truncate tracking-normal">{row.text}</span>
                   {row.external && (
                     <>
                       <span className="sr-only"> ({t('external')})</span>

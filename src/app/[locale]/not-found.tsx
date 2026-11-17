@@ -14,7 +14,7 @@ export default function NotFound() {
   const t = useTranslations('notFound')
   return (
     <div className="mx-auto max-w-3xl px-4 py-24">
-      <h1 className="font-display text-4xl">{t('title')}</h1>
+      <h1 className="text-4xl font-bold tracking-tight">{t('title')}</h1>
       <p className="mt-6">
         <Link href="/" className="inline-flex min-h-11 items-center underline underline-offset-4">
           {t('back')}

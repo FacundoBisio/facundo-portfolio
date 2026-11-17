@@ -77,7 +77,7 @@ export function MediaCarousel({
                     setLightboxOpen(true)
                   }}
                   aria-label={`${t('open')}: ${slide.caption[locale]}`}
-                  className="absolute inset-0 cursor-zoom-in focus-visible:outline-offset-[-4px]"
+                  className="absolute inset-0 cursor-zoom-in rounded-2xl focus-visible:outline-offset-[-4px]"
                 />
               </div>
             </CarouselItem>
@@ -98,7 +98,7 @@ export function MediaCarousel({
                   aria-label={thumbSrc(slide) ? t('goTo', { index: i + 1 }) : `${t(slide.type)}: ${t('goTo', { index: i + 1 })}`}
                   aria-current={i === selected ? 'true' : undefined}
                   className={cn(
-                    'relative flex h-[60px] w-24 shrink-0 items-center justify-center overflow-hidden border bg-card transition-colors duration-150',
+                    'relative flex h-[60px] w-[130px] shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-card transition-[border-color,opacity,transform] duration-(--dur-base) ease-(--ease-out) motion-safe:hover:-translate-y-0.5',
                     i === selected ? 'border-foreground' : 'border-border hover:border-line-strong',
                   )}
                 >
@@ -139,5 +139,5 @@ function Thumbnail({ slide }: { slide: MediaSlide }) {
       </span>
     )
   }
-  return <Image src={src} alt="" fill sizes="96px" unoptimized={src.endsWith('.svg')} className="object-cover" />
+  return <Image src={src} alt="" fill sizes="130px" unoptimized={src.endsWith('.svg')} className="object-cover" />
 }

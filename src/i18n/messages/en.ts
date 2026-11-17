@@ -10,7 +10,7 @@ const en = {
   },
   nav: {
     work: 'Work',
-    process: 'Process',
+    about: 'About',
     experience: 'Experience',
     stack: 'Stack',
     contact: 'Contact',
@@ -21,6 +21,7 @@ const en = {
     language: 'Language',
     switchToEs: 'Cambiar a español',
     switchToEn: 'Switch to English',
+    toggleTheme: 'Toggle light and dark theme',
     downloadCv: 'Download CV',
     home: 'Facundo Bisio, home',
   },
@@ -30,6 +31,9 @@ const en = {
     statement: 'I build web products and keep them running.',
     value:
       'Data model, APIs, UI, deployment and what comes after. Two subscription platforms for paying clients go to production in December 2026.',
+    roleShort: 'Full-stack developer',
+    pillars: ['Data model', 'APIs', 'Interface', 'Deploy and operations'],
+    ctaWork: 'See the work',
     ctaCv: 'Download CV',
     ctaContact: 'Get in touch',
     location: 'Córdoba, Argentina · UTC-3 · Open to remote',
@@ -99,6 +103,10 @@ const en = {
       },
     ],
   },
+  about: {
+    label: 'About',
+    title: 'Experience, stack and teaching',
+  },
   experience: {
     label: 'Experience',
     title: 'Timeline',
@@ -160,6 +168,7 @@ const en = {
     github: 'GitHub',
     cv: 'Download CV (PDF)',
     external: 'opens in a new tab',
+    photoAlt: 'Facundo Bisio smiling, taking a mirror selfie in a black T-shirt',
   },
   footer: {
     location: 'Córdoba, Argentina',

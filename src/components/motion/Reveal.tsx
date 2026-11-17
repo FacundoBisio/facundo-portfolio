@@ -18,17 +18,32 @@ export function Reveal({ children, className }: { children: React.ReactNode; cla
 
     // Reduced motion keeps the fade and drops the movement.
     const rise = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const from = 'translateY(32px) scale(0.98)'
     el.style.opacity = '0'
-    if (rise) el.style.transform = 'translateY(16px)'
+    if (rise) {
+      el.style.transform = from
+      el.style.filter = 'blur(6px)'
+    }
 
     return inView(
       el,
       () => {
+        // Explicit end values: Motion reads 'none' as zeroed functions, which would leave scale(0).
         animate(
           el,
-          rise ? { opacity: [0, 1], transform: ['translateY(16px)', 'none'] } : { opacity: [0, 1] },
-          { duration: DUR.slow, ease: EASE },
-        )
+          rise
+            ? {
+                opacity: [0, 1],
+                transform: [from, 'translateY(0px) scale(1)'],
+                filter: ['blur(6px)', 'blur(0px)'],
+              }
+            : { opacity: [0, 1] },
+          { duration: DUR.reveal, ease: EASE },
+        ).then(() => {
+          // Leaving a transform or filter behind would trap sticky and fixed descendants.
+          el.style.transform = ''
+          el.style.filter = ''
+        })
       },
       { margin: '0px 0px -10% 0px' },
     )

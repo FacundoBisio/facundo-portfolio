@@ -8,6 +8,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { CvLink } from './CvLink'
 import { LanguageToggle } from './LanguageToggle'
+import { ThemeToggle } from './ThemeToggle'
 import { MobileNav, NAV_SECTIONS } from './MobileNav'
 
 /** Section in the middle band of the viewport, for the current-link state. Home only. */
@@ -40,12 +41,12 @@ export function Navbar() {
   const current = useCurrentSection(pathname === '/')
 
   return (
-    <header id="top" className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background">
+    <header id="top" className="enter fixed inset-x-0 top-0 z-40 border-b border-border bg-background/75 backdrop-blur-md transition-colors duration-(--dur-slow)">
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
         <Link
           href="/"
           aria-label={t('home')}
-          className="-mx-1 inline-flex min-h-11 items-center px-1 font-display text-xl whitespace-nowrap"
+          className="-mx-1 inline-flex min-h-11 items-center gap-2 px-1 text-lg font-bold tracking-tight whitespace-nowrap"
         >
           {tHero('name')}
         </Link>
@@ -58,7 +59,10 @@ export function Navbar() {
                   href={{ pathname: '/', hash: id }}
                   aria-current={current === id ? 'location' : undefined}
                   className={cn(
-                    'inline-flex min-h-11 items-center px-2 text-label uppercase transition-colors duration-(--dur-fast) ease-(--ease-out) lg:px-3',
+                    // Underline grows from the left on hover and stays for the current section.
+                    'relative inline-flex min-h-11 items-center px-2 text-label uppercase transition-colors duration-(--dur-base) ease-(--ease-out) lg:px-3',
+                    'after:absolute after:inset-x-2 after:bottom-2.5 after:h-px after:origin-left after:scale-x-0 after:bg-ring after:transition-transform after:duration-(--dur-slow) after:ease-(--ease-out) hover:after:scale-x-100 lg:after:inset-x-3',
+                    current === id && 'after:scale-x-100',
                     current === id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
@@ -70,6 +74,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <LanguageToggle />
           <CvLink className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'hidden lg:inline-flex')} />
           <MobileNav className="md:hidden" />

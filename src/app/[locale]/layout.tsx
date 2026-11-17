@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Serif_Display, Manrope, DM_Mono } from 'next/font/google'
+import { Manrope, DM_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -8,14 +8,8 @@ import { routing } from '@/i18n/routing'
 import { SITE, localizedUrl } from '@/content/site'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-
-const dmSerif = DM_Serif_Display({
-  subsets: ['latin'],
-  variable: '--font-dm-serif',
-  display: 'swap',
-  weight: '400',
-  style: ['normal', 'italic'],
-})
+import { THEME_SCRIPT } from '@/components/layout/ThemeToggle'
+import { RootAttributes } from '@/components/layout/RootAttributes'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -88,13 +82,36 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale} className={`${dmSerif.variable} ${manrope.variable} ${dmMono.variable}`}>
+    <html
+      lang={locale}
+      // data-theme is set by THEME_SCRIPT before hydration.
+      suppressHydrationWarning
+      className={`${manrope.variable} ${dmMono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/* The intro curtain plays once per tab session; later loads mark it seen before paint, and the first one
+            does too once the hero has finished, so in-app navigation is not held back by the intro delay. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var r=document.documentElement;if(sessionStorage.getItem('intro'))r.dataset.intro='seen';else{sessionStorage.setItem('intro','1');setTimeout(function(){r.dataset.intro='seen'},3200)}}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
+        <div aria-hidden="true" className="intro-curtain">
+          <span>{SITE.name}</span>
+        </div>
+        <div aria-hidden="true" className="ambient">
+          <span />
+          <span />
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         />
         <NextIntlClientProvider>
+          <RootAttributes />
           <a
             href="#main"
             className="fixed top-2 left-2 z-50 flex min-h-11 -translate-y-24 items-center rounded-sm bg-primary px-4 py-3 text-label text-primary-foreground uppercase focus:translate-y-0"

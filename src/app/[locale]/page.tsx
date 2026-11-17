@@ -6,10 +6,8 @@ import { routing } from '@/i18n/routing'
 import { localizedUrl } from '@/content/site'
 import { Hero } from '@/components/sections/Hero'
 import { Work } from '@/components/sections/Work'
-import { Process } from '@/components/sections/Process'
-import { Experience } from '@/components/sections/Experience'
-import { Stack } from '@/components/sections/Stack'
-import { Teaching } from '@/components/sections/Teaching'
+import { About } from '@/components/sections/About'
+import { ProjectMarquee } from '@/components/work/ProjectMarquee'
 import { Contact } from '@/components/sections/Contact'
 
 export async function generateMetadata({
@@ -39,11 +37,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <Hero />
+      <ProjectMarquee />
       <Work />
-      <Process />
-      <Experience />
-      <Stack />
-      <Teaching />
+      <About />
       <Contact />
     </>
   )

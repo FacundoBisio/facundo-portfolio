@@ -1,14 +1,17 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { ArrowUpRightIcon } from 'lucide-react'
+import { ArrowUpRightIcon, MailIcon } from 'lucide-react'
 
 import { SITE } from '@/content/site'
 import { buttonVariants } from '@/components/ui/button'
 import { CvLink } from '@/components/layout/CvLink'
+import { Spotlight } from '@/components/motion/Spotlight'
 import { cn } from '@/lib/utils'
-import { Section, SectionHeader, TWO_COL } from './Section'
+import { Section } from './Section'
 
 const display = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')
 
+/** One card: photo and pitch, the email as the main action, the other channels as pills. */
 export function Contact() {
   const t = useTranslations('contact')
   const rows = [
@@ -19,46 +22,56 @@ export function Contact() {
 
   return (
     <Section id="contact">
-      <SectionHeader id="contact" label={t('label')} title={t('title')} intro={t('body')} />
+      <div className="rounded-[2rem] p-px [background:linear-gradient(140deg,var(--brand),var(--border)_35%,var(--border)_65%,var(--brand-2))]">
+        <Spotlight className="flex flex-col items-center gap-8 rounded-[calc(2rem-1px)] bg-card px-5 py-12 text-center sm:px-10 lg:py-16">
+          <div className="flex flex-col items-center gap-5">
+            <Image
+              src="/images/facundo.webp"
+              alt={t('photoAlt')}
+              width={88}
+              height={88}
+              className="size-20 rounded-full object-cover ring-2 ring-brand ring-offset-4 ring-offset-card"
+            />
+            <p className="text-label text-muted-foreground uppercase">{t('label')}</p>
+            <h2 id="contact-title" className="text-display">
+              {t('title')}
+            </h2>
+            <p className="max-w-[52ch] text-body text-muted-foreground">{t('body')}</p>
+          </div>
 
-      <div className={cn(TWO_COL, 'mt-10 lg:mt-14')}>
-        <div className="flex min-w-0 flex-col gap-10 min-[900px]:col-start-2">
           <a
             href={`mailto:${SITE.email}`}
-            className="flex min-h-11 w-fit max-w-full items-center font-display text-[clamp(1.5rem,6vw,3.25rem)] leading-tight [overflow-wrap:anywhere] underline decoration-line-strong decoration-1 underline-offset-[0.15em] transition-colors duration-(--dur-fast) ease-(--ease-out) hover:decoration-primary"
+            className={cn(buttonVariants({ variant: 'default', size: 'lg' }), 'h-auto min-h-12 max-w-full py-3 normal-case [overflow-wrap:anywhere] whitespace-normal')}
           >
+            <MailIcon aria-hidden="true" />
             <span className="sr-only">{t('email')}: </span>
-            {SITE.email}
+            <span className="text-base tracking-normal">{SITE.email}</span>
           </a>
 
-          <dl className="border-b border-border">
+          <ul className="flex flex-wrap justify-center gap-2">
             {rows.map((row) => (
-              <div
-                key={row.key}
-                className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-x-6 border-t border-border sm:grid-cols-[8rem_minmax(0,1fr)]"
-              >
-                <dt className="text-label text-muted-foreground uppercase">{t(row.key)}</dt>
-                <dd className="min-w-0">
-                  <a
-                    href={row.href}
-                    {...(row.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                    className="inline-flex min-h-12 max-w-full items-center gap-2 text-body [overflow-wrap:anywhere] transition-colors duration-(--dur-fast) ease-(--ease-out) hover:text-muted-foreground"
-                  >
-                    {row.text}
-                    {row.external && (
-                      <>
-                        <span className="sr-only"> ({t('external')})</span>
-                        <ArrowUpRightIcon aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
-                      </>
-                    )}
-                  </a>
-                </dd>
-              </div>
+              <li key={row.key}>
+                <a
+                  href={row.href}
+                  {...(row.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'normal-case')}
+                >
+                  <span className="text-muted-foreground uppercase">{t(row.key)}</span>
+                  <span className="tracking-normal">{row.text}</span>
+                  {row.external && (
+                    <>
+                      <span className="sr-only"> ({t('external')})</span>
+                      <ArrowUpRightIcon aria-hidden="true" />
+                    </>
+                  )}
+                </a>
+              </li>
             ))}
-          </dl>
-
-          <CvLink className={cn(buttonVariants({ variant: 'default' }), 'w-fit')}>{t('cv')}</CvLink>
-        </div>
+            <li>
+              <CvLink className={buttonVariants({ variant: 'outline', size: 'sm' })}>{t('cv')}</CvLink>
+            </li>
+          </ul>
+        </Spotlight>
       </div>
     </Section>
   )

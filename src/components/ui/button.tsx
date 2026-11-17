@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils"
 
 // Each variant sets its own border colour: `buttonVariants` is also used without `cn`, so base and variant must not conflict.
 // DESIGN.md › Buttons: 2px radius, 44px high, DM Mono label. Focus comes from the global :focus-visible outline.
-// Press feedback: a slight scale on :active (an opacity dip under reduced motion).
+// Hover: a 2px lift. Press: a slight scale on :active (an opacity dip under reduced motion).
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-sm border text-label whitespace-nowrap uppercase transition-[color,background-color,border-color,text-decoration-color,opacity,transform] duration-(--dur-fast) ease-(--ease-out) select-none motion-safe:not-aria-disabled:active:scale-[0.97] motion-reduce:not-aria-disabled:active:opacity-80 disabled:pointer-events-none disabled:opacity-50 aria-disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-full border text-label whitespace-nowrap uppercase transition-[color,background-color,border-color,text-decoration-color,opacity,transform,box-shadow] duration-(--dur-base) ease-(--ease-out) select-none motion-safe:not-aria-disabled:hover:-translate-y-0.5 motion-safe:not-aria-disabled:active:translate-y-0 motion-safe:not-aria-disabled:active:scale-[0.97] motion-reduce:not-aria-disabled:active:opacity-80 disabled:pointer-events-none disabled:opacity-50 aria-disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground hover:bg-lime-deep",
+        default: "border-transparent bg-primary text-primary-foreground hover:bg-brand-deep hover:shadow-[0_10px_28px_-12px_var(--brand)]",
         outline:
           "border-line-strong bg-transparent text-foreground hover:bg-secondary aria-expanded:bg-secondary",
         secondary:

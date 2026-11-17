@@ -2,7 +2,7 @@ import type { Project } from './types'
 
 // Facts come from the CV table in prompt-portfolio-redesign.md and the previous
 // src/lib/experience.ts (deleted; see git history). Nothing here may be added without a source.
-// Media: every `src` is undefined until recorded. Process recordings with
+// Media: a slide without `src` renders the placeholder. Process recordings with
 // `node scripts/optimize-media.mjs <slug> <files…>` and fill src / webm / poster.
 
 const PROD_DEC_2026 = {
@@ -66,6 +66,18 @@ export const projects: Project[] = [
     },
     media: [
       {
+        type: 'image',
+        src: '/media/contigiani-brinon/home.webp',
+        alt: {
+          en: 'The Contigiani Briñón home page: full-width hero with the agency name, the "Ideas que se concretan" headline and buttons to browse properties or request a valuation.',
+          es: 'La portada de Contigiani Briñón: hero a todo el ancho con el nombre de la inmobiliaria, el título "Ideas que se concretan" y botones para ver propiedades o pedir una tasación.',
+        },
+        caption: {
+          en: 'Home page of the public site.',
+          es: 'Portada de la web pública.',
+        },
+      },
+      {
         type: 'video',
         src: '/media/contigiani-brinon/search.mp4',
         webm: '/media/contigiani-brinon/search.webm',
@@ -101,6 +113,30 @@ export const projects: Project[] = [
         caption: {
           en: 'The enquiries inbox, the base of the CRM in development.',
           es: 'La bandeja de consultas, base del CRM en desarrollo.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/contigiani-brinon/featured.webp',
+        alt: {
+          en: 'Featured listings grid: property cards with photo, price, location, bedrooms, bathrooms and area, plus a valuation call-to-action on the side.',
+          es: 'Grilla de inmuebles destacados: tarjetas con foto, precio, ubicación, dormitorios, baños y superficie, y un llamado a pedir tasación al costado.',
+        },
+        caption: {
+          en: 'Featured properties on the home page.',
+          es: 'Inmuebles destacados en la portada.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/contigiani-brinon/map.webp',
+        alt: {
+          en: 'Property search in map view: price markers over a map of Córdoba with the result count and the list/map switch.',
+          es: 'Búsqueda de propiedades en vista mapa: marcadores con precio sobre un mapa de Córdoba, con la cantidad de resultados y el cambio entre lista y mapa.',
+        },
+        caption: {
+          en: 'Search results on the map.',
+          es: 'Resultados de búsqueda en el mapa.',
         },
       },
       {
@@ -159,6 +195,18 @@ export const projects: Project[] = [
     },
     media: [
       {
+        type: 'image',
+        src: '/media/virtual-rep-cba/home.webp',
+        alt: {
+          en: 'The Virtual Rep CBA home page: headline on the left and a search box for a part name or code on the right.',
+          es: 'La portada de Virtual Rep CBA: título a la izquierda y un buscador por nombre o código de repuesto a la derecha.',
+        },
+        caption: {
+          en: 'Home page with the part search.',
+          es: 'Portada con el buscador de repuestos.',
+        },
+      },
+      {
         type: 'video',
         src: '/media/virtual-rep-cba/search.mp4',
         webm: '/media/virtual-rep-cba/search.webm',
@@ -194,6 +242,18 @@ export const projects: Project[] = [
         caption: {
           en: 'Search results with filters.',
           es: 'Resultados de búsqueda con filtros.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/virtual-rep-cba/cart.webp',
+        alt: {
+          en: 'The order panel: one item with price and quantity, the estimated total and optional vehicle fields to confirm compatibility.',
+          es: 'El panel del pedido: un producto con precio y cantidad, el total estimado y campos opcionales del vehículo para confirmar compatibilidad.',
+        },
+        caption: {
+          en: 'The order panel with vehicle details.',
+          es: 'El panel del pedido con los datos del vehículo.',
         },
       },
       {
@@ -250,6 +310,18 @@ export const projects: Project[] = [
     },
     media: [
       {
+        type: 'image',
+        src: '/media/ffmates/home.webp',
+        alt: {
+          en: 'The FFMates home page: green hero with the "El mate que te define" headline and buttons to explore the mates or read the story.',
+          es: 'La portada de FFMates: hero verde con el título "El mate que te define" y botones para explorar los mates o leer la historia.',
+        },
+        caption: {
+          en: 'Home page of the store.',
+          es: 'Portada de la tienda.',
+        },
+      },
+      {
         type: 'video',
         src: '/media/ffmates/checkout.mp4',
         webm: '/media/ffmates/checkout.webm',
@@ -285,6 +357,18 @@ export const projects: Project[] = [
         caption: {
           en: 'The cart, kept in sync with Zustand.',
           es: 'El carrito, sincronizado con Zustand.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/ffmates/about.webp',
+        alt: {
+          en: 'The "Nuestra historia" page: intro text, a row of the store\'s own figures and three cards on craftsmanship, nationwide shipping and personal attention.',
+          es: 'La página "Nuestra historia": texto de presentación, una fila con datos de la tienda y tres tarjetas sobre calidad artesanal, envíos a todo el país y atención personalizada.',
+        },
+        caption: {
+          en: 'The about page.',
+          es: 'La página de nosotros.',
         },
       },
     ],
@@ -333,6 +417,18 @@ export const projects: Project[] = [
     },
     media: [
       {
+        type: 'image',
+        src: '/media/phantom-stock/home.webp',
+        alt: {
+          en: 'The Phantom Stock landing page: "Gestioná tu inventario de forma inteligente" headline, access buttons and a preview of the inventory summary.',
+          es: 'La landing de Phantom Stock: título "Gestioná tu inventario de forma inteligente", botones de acceso y una vista previa del resumen de inventario.',
+        },
+        caption: {
+          en: 'Landing page.',
+          es: 'Landing page.',
+        },
+      },
+      {
         type: 'video',
         src: '/media/phantom-stock/assistant.mp4',
         webm: '/media/phantom-stock/assistant.webm',
@@ -371,6 +467,30 @@ export const projects: Project[] = [
         },
       },
       {
+        type: 'image',
+        src: '/media/phantom-stock/panel.webp',
+        alt: {
+          en: 'The stock panel: inventory totals, a low-stock alert and the product table with SKU, price, stock and actions. Sample data.',
+          es: 'El panel de stock: totales del inventario, una alerta de stock crítico y la tabla de productos con SKU, precio, stock y acciones. Datos de ejemplo.',
+        },
+        caption: {
+          en: 'The stock panel and product table.',
+          es: 'El panel de stock y la tabla de productos.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/phantom-stock/plans.webp',
+        alt: {
+          en: 'The plans page: Free, Pro and Enterprise cards with product limits and weekly assistant queries.',
+          es: 'La página de planes: tarjetas Free, Pro y Enterprise con límites de productos y consultas semanales al asistente.',
+        },
+        caption: {
+          en: 'Plans and their limits.',
+          es: 'Planes y sus límites.',
+        },
+      },
+      {
         type: 'diagram',
         src: '/media/phantom-stock/architecture.svg',
         alt: {
@@ -394,8 +514,8 @@ export const projects: Project[] = [
       es: 'Sitio multilenguaje para una empresa española de confituras. Carga en menos de un segundo, con SEO internacional: hreflang, sitemap y robots.txt.',
     },
     stack: ['HTML', 'Vanilla JS', 'Tailwind CSS v4', 'PHP'],
-    status: { en: 'Live · December 2025 to February 2026', es: 'En línea · diciembre de 2025 a febrero de 2026' },
-    links: [{ label: LIVE_SITE, href: 'https://confituras.palmelita.es' }],
+    status: { en: 'December 2025 to February 2026 · no longer online', es: 'Diciembre de 2025 a febrero de 2026 · ya no está en línea' },
+    links: [],
     media: [],
   },
   {
@@ -408,9 +528,46 @@ export const projects: Project[] = [
       es: 'Sitio de captación de inversores con SEO técnico completo: JSON-LD, Open Graph y sitemap XML.',
     },
     stack: ['HTML', 'JavaScript', 'Tailwind CSS v4', 'PHP', 'JSON-LD'],
-    status: { en: 'Live · October to December 2025', es: 'En línea · octubre a diciembre de 2025' },
-    links: [{ label: LIVE_SITE, href: 'https://eusa-partners.com' }],
-    media: [],
+    status: { en: 'October to December 2025 · no longer online', es: 'Octubre a diciembre de 2025 · ya no está en línea' },
+    links: [],
+    media: [
+      {
+        type: 'image',
+        src: '/media/eusa-partners/home.webp',
+        alt: {
+          en: 'The EUSA home page: "Co-Build a Global, Investor-Ready Startup." headline over a skyline, with buttons for founders and investors.',
+          es: 'La portada de EUSA: título "Co-Build a Global, Investor-Ready Startup." sobre edificios, con botones para fundadores e inversores.',
+        },
+        caption: {
+          en: 'Home page.',
+          es: 'Portada.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/eusa-partners/audiences.webp',
+        alt: {
+          en: 'Two panels side by side: "Raise & Scale" for founders and "Access Pre-Vetted Deal Flow" for investors.',
+          es: 'Dos paneles lado a lado: "Raise & Scale" para fundadores y "Access Pre-Vetted Deal Flow" para inversores.',
+        },
+        caption: {
+          en: 'One page, two audiences: founders and investors.',
+          es: 'Una página, dos públicos: fundadores e inversores.',
+        },
+      },
+      {
+        type: 'image',
+        src: '/media/eusa-partners/programs.webp',
+        alt: {
+          en: 'The programs section: four cards for Fundraising, Fundraising Sprint, Revenue Engine and Co-Founder Match.',
+          es: 'La sección de programas: cuatro tarjetas para Fundraising, Fundraising Sprint, Revenue Engine y Co-Founder Match.',
+        },
+        caption: {
+          en: 'The programs.',
+          es: 'Los programas.',
+        },
+      },
+    ],
   },
 ]
 

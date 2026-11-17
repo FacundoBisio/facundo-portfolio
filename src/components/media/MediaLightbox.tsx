@@ -90,7 +90,7 @@ function LightboxBody({ slides, locale, projectName, startIndex, onIndexChange }
               inert={i !== selected}
               aria-label={t('position', { current: i + 1, total: slides.length })}
             >
-              <figure className="mx-auto flex w-full max-w-[calc((100dvh-13rem)*1.6)] flex-col gap-3">
+              <figure className="mx-auto flex w-full max-w-[calc((100dvh-13rem)*2.16)] flex-col gap-3">
                 <MediaSlideView slide={slide} locale={locale} active={i === selected} />
                 <figcaption className="font-mono text-xs tracking-[0.08em] text-muted-foreground">
                   {slide.caption[locale]}

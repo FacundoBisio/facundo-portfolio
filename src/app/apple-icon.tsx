@@ -8,7 +8,7 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          background: '#0E100C',
+          background: '#0B0B12',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -18,7 +18,7 @@ export default function AppleIcon() {
           position: 'relative',
         }}
       >
-        {/* Subtle lime glow top-left */}
+        {/* Subtle indigo glow top-left */}
         <div style={{
           position: 'absolute',
           top: -20, left: -20,
@@ -34,19 +34,19 @@ export default function AppleIcon() {
           <div style={{
             position: 'absolute', left: 0, top: 0,
             width: 17, height: 95,
-            background: '#C6F24E', borderRadius: 5,
+            background: '#7C6CFF', borderRadius: 5,
           }} />
           {/* Top arm */}
           <div style={{
             position: 'absolute', left: 0, top: 0,
             width: 84, height: 17,
-            background: '#C6F24E', borderRadius: 5,
+            background: '#7C6CFF', borderRadius: 5,
           }} />
           {/* Middle arm */}
           <div style={{
             position: 'absolute', left: 0, top: 39,
             width: 62, height: 17,
-            background: '#C6F24E', borderRadius: 5,
+            background: '#7C6CFF', borderRadius: 5,
           }} />
         </div>
 
@@ -54,7 +54,7 @@ export default function AppleIcon() {
         <div style={{
           position: 'absolute', right: 32, bottom: 32,
           width: 14, height: 14,
-          background: '#C6F24E',
+          background: '#7C6CFF',
           borderRadius: '50%',
           opacity: 0.5,
           display: 'flex',

@@ -1,3 +1,4 @@
+import { MediaCarousel } from '@/components/media/MediaCarousel'
 import { useLocale, useTranslations } from 'next-intl'
 import { ArrowUpRightIcon } from 'lucide-react'
 
@@ -19,23 +20,29 @@ export function Work() {
     <Section id="work">
       <SectionHeader id="work" label={t('label')} title={t('title')} intro={t('intro')} />
 
-      <ol className="mt-8 divide-y divide-border lg:mt-12">
+      {/* From lg the cards stick and stack as the page scrolls; each one slides over the last. */}
+      <ol className="mt-10 flex flex-col gap-6 lg:mt-14 lg:gap-10">
         {featured.map((project, i) => (
-          <li key={project.slug}>
+          <li key={project.slug} className="lg:sticky" style={{ top: `${6 + i * 1.25}rem` }}>
             <Reveal>
-              <ProjectRow project={project} locale={locale} flip={i % 2 === 1} />
+              <ProjectRow project={project} locale={locale} index={i} />
             </Reveal>
           </li>
         ))}
       </ol>
 
-      <div className={cn(TWO_COL, 'gap-y-6 border-t border-border pt-12 lg:pt-16')}>
+      <div className={cn(TWO_COL, 'mt-16 gap-y-6 pt-4 lg:mt-24')}>
         <h3 className="pt-1 text-label text-muted-foreground uppercase">{t('moreTitle')}</h3>
         <ul className="divide-y divide-border border-y border-border">
           {more.map((project) => {
             const link = project.links[0]
             return (
               <li key={project.slug} className="grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+                {project.media.length > 0 && (
+                  <div className="mb-4 sm:col-span-2">
+                    <MediaCarousel slides={project.media} locale={locale} projectName={project.name} />
+                  </div>
+                )}
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <h4 className="text-body font-semibold">{project.name}</h4>

@@ -9,7 +9,7 @@ const es: Messages = {
   },
   nav: {
     work: 'Trabajo',
-    process: 'Proceso',
+    about: 'Sobre mí',
     experience: 'Experiencia',
     stack: 'Stack',
     contact: 'Contacto',
@@ -20,6 +20,7 @@ const es: Messages = {
     language: 'Idioma',
     switchToEs: 'Cambiar a español',
     switchToEn: 'Switch to English',
+    toggleTheme: 'Cambiar entre tema claro y oscuro',
     downloadCv: 'Descargar CV',
     home: 'Facundo Bisio, inicio',
   },
@@ -29,6 +30,9 @@ const es: Messages = {
     statement: 'Construyo productos web y los mantengo funcionando.',
     value:
       'Modelo de datos, APIs, interfaz, deploy y lo que viene después. Dos plataformas por suscripción para clientes que pagan salen a producción en diciembre de 2026.',
+    roleShort: 'Desarrollador full-stack',
+    pillars: ['Modelo de datos', 'APIs', 'Interfaz', 'Deploy y operación'],
+    ctaWork: 'Ver proyectos',
     ctaCv: 'Descargar CV',
     ctaContact: 'Escribime',
     location: 'Córdoba, Argentina · UTC-3 · Disponible para trabajo remoto',
@@ -97,6 +101,10 @@ const es: Messages = {
         body: 'Después del lanzamiento sigo a cargo: hosting, correcciones y funcionalidades nuevas bajo una suscripción mensual.',
       },
     ],
+  },
+  about: {
+    label: 'Sobre mí',
+    title: 'Experiencia, stack y docencia',
   },
   experience: {
     label: 'Experiencia',
@@ -167,6 +175,7 @@ const es: Messages = {
     github: 'GitHub',
     cv: 'Descargar CV (PDF)',
     external: 'se abre en una pestaña nueva',
+    photoAlt: 'Facundo Bisio sonriendo, sacándose una selfie en el espejo con remera negra',
   },
   footer: {
     location: 'Córdoba, Argentina',

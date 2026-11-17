@@ -11,7 +11,7 @@ import { CvLink } from './CvLink'
 import { LanguageToggle } from './LanguageToggle'
 
 /** Section anchors shown in the navigation, in page order (PLAN.md § 4.5). */
-export const NAV_SECTIONS = ['work', 'process', 'experience', 'stack', 'contact'] as const
+export const NAV_SECTIONS = ['work', 'about', 'contact'] as const
 
 /** Below 768px: a sheet from the right. Esc closes it and Base UI returns focus to the trigger. */
 export function MobileNav({ className }: { className?: string }) {

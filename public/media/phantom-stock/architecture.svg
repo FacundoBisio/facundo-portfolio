@@ -1,46 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-label="Phantom-Stock · architecture">
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#979C8A"/></marker></defs>
-<rect width="1280" height="800" fill="#0E100C"/>
-<text x="64" y="84" font-family="ui-monospace, monospace" font-size="20" letter-spacing="2" fill="#C6F24E">PHANTOM-STOCK · ARCHITECTURE</text>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9A9AB0"/></marker></defs>
+<rect width="1280" height="800" fill="#0B0B12"/>
+<text x="64" y="84" font-family="ui-monospace, monospace" font-size="20" letter-spacing="2" fill="#7C6CFF">PHANTOM-STOCK · ARCHITECTURE</text>
 <g>
-  <rect x="64" y="200" width="300" height="120" rx="4" fill="#1D2119" stroke="#3A4130" stroke-width="2"/>
-  <text x="214" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#ECEFE4">React dashboard</text>
-  <text x="214" y="286" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#979C8A">Vercel</text>
+  <rect x="64" y="200" width="300" height="120" rx="4" fill="#1C1C2A" stroke="#34344A" stroke-width="2"/>
+  <text x="214" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#EDEDF5">React dashboard</text>
+  <text x="214" y="286" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#9A9AB0">Vercel</text>
 </g>
 <g>
-  <rect x="64" y="480" width="300" height="120" rx="4" fill="#1D2119" stroke="#3A4130" stroke-width="2"/>
-  <text x="214" y="532" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#ECEFE4">WhatsApp</text>
-  <text x="214" y="566" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#979C8A">Business API</text>
+  <rect x="64" y="480" width="300" height="120" rx="4" fill="#1C1C2A" stroke="#34344A" stroke-width="2"/>
+  <text x="214" y="532" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#EDEDF5">WhatsApp</text>
+  <text x="214" y="566" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#9A9AB0">Business API</text>
 </g>
 <g>
-  <rect x="490" y="340" width="300" height="120" rx="4" fill="#1D2119" stroke="#C6F24E" stroke-width="2"/>
-  <text x="640" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#ECEFE4">Express API</text>
-  <text x="640" y="426" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#979C8A">CF Workers · JWT/RBAC</text>
+  <rect x="490" y="340" width="300" height="120" rx="4" fill="#1C1C2A" stroke="#7C6CFF" stroke-width="2"/>
+  <text x="640" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#EDEDF5">Express API</text>
+  <text x="640" y="426" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#9A9AB0">CF Workers · JWT/RBAC</text>
 </g>
 <g>
-  <rect x="916" y="200" width="300" height="120" rx="4" fill="#1D2119" stroke="#3A4130" stroke-width="2"/>
-  <text x="1066" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#ECEFE4">PostgreSQL</text>
-  <text x="1066" y="286" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#979C8A">via Prisma</text>
+  <rect x="916" y="200" width="300" height="120" rx="4" fill="#1C1C2A" stroke="#34344A" stroke-width="2"/>
+  <text x="1066" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#EDEDF5">PostgreSQL</text>
+  <text x="1066" y="286" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#9A9AB0">via Prisma</text>
 </g>
 <g>
-  <rect x="916" y="480" width="300" height="120" rx="4" fill="#1D2119" stroke="#3A4130" stroke-width="2"/>
-  <text x="1066" y="532" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#ECEFE4">LLM</text>
-  <text x="1066" y="566" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#979C8A">natural-language stock</text>
+  <rect x="916" y="480" width="300" height="120" rx="4" fill="#1C1C2A" stroke="#34344A" stroke-width="2"/>
+  <text x="1066" y="532" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#EDEDF5">LLM</text>
+  <text x="1066" y="566" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#9A9AB0">natural-language stock</text>
 </g>
 <g>
-  <line x1="364" y1="260" x2="488" y2="370" stroke="#979C8A" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="364" y1="260" x2="488" y2="370" stroke="#9A9AB0" stroke-width="2" marker-end="url(#a)"/>
   
 </g>
 <g>
-  <line x1="364" y1="540" x2="488" y2="430" stroke="#979C8A" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="364" y1="540" x2="488" y2="430" stroke="#9A9AB0" stroke-width="2" marker-end="url(#a)"/>
   
 </g>
 <g>
-  <line x1="790" y1="370" x2="914" y2="270" stroke="#979C8A" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="790" y1="370" x2="914" y2="270" stroke="#9A9AB0" stroke-width="2" marker-end="url(#a)"/>
   
 </g>
 <g>
-  <line x1="790" y1="430" x2="914" y2="530" stroke="#979C8A" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="790" y1="430" x2="914" y2="530" stroke="#9A9AB0" stroke-width="2" marker-end="url(#a)"/>
   
 </g>
 </svg>

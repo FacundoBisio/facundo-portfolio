@@ -26,21 +26,21 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px 80px',
-          background: '#0E100C',
-          color: '#ECEFE4',
+          background: '#0B0B12',
+          color: '#EDEDF5',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 24, color: '#C6F24E', letterSpacing: '0.12em' }}>
+        <div style={{ display: 'flex', fontSize: 24, color: '#7C6CFF', letterSpacing: '0.12em' }}>
           {m.hero.role.toUpperCase()}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', fontSize: 104, fontWeight: 700, lineHeight: 1 }}>{SITE.name}</div>
-          <div style={{ display: 'flex', marginTop: 32, fontSize: 40, color: '#979C8A' }}>
+          <div style={{ display: 'flex', marginTop: 32, fontSize: 40, color: '#9A9AB0' }}>
             {m.hero.statement}
           </div>
         </div>
-        <div style={{ display: 'flex', fontSize: 24, color: '#979C8A' }}>{m.hero.location}</div>
+        <div style={{ display: 'flex', fontSize: 24, color: '#9A9AB0' }}>{m.hero.location}</div>
       </div>
     ),
     { ...size },
